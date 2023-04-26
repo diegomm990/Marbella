@@ -21,8 +21,22 @@ const createStock = async(req,res) => {
         console.log(error);
     }
 }
+const manageStock = async(req,res)=> {
+    let {name, size, quantity} = req.body;
+    try {
+        let oldStock = await Stock.findOne({name,size})
+        let oldQuan = oldStock.quantity;
+        let stockUpdt = await Stock.findOneAndUpdate({name, size}, {
+            quantity: oldQuan - quantity
+        })
+        res.status(200).send(stockUpdt)
+    } catch (error){
+        console.log(error);
+    }
+}
 
 module.exports= {
     getStock,
-    createStock
+    createStock,
+    manageStock
 }

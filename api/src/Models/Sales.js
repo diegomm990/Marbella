@@ -7,7 +7,8 @@ const SalesSchema = new Schema({
   },
   user: {
     type: mongoose.Types.ObjectId,
-    required: true
+    required: true,
+    ref: 'Users'
   },
   address: {
     type: Object,
@@ -19,6 +20,11 @@ const SalesSchema = new Schema({
   },
   approved: {
     type: Boolean,
+    required: true,
+    default: false
+  },
+  delivered: {
+    type : Boolean,
     required: true,
     default: false
   }

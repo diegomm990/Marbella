@@ -56,6 +56,9 @@ const deleteProduct = async (req, res) => {
     console.log(err);
   }
 };
+// const substractStock = async(req,res)=> {
+
+// }
 
 module.exports = {
     getAll,
