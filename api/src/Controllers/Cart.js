@@ -21,22 +21,68 @@ const getCartByUser = async(req,res)=> {
     }
 }
 const createCart = async(req,res)=> {
-    let {user, date, products} = req.body;
+    let {user, products} = req.body;
+    let date = new Date();
     try {
         const exists = await Carts.find({user, saleFinished:false})
-        if(!exists){
-            const cart = await Carts.create({
+        if(!exists.length){
+            await Carts.create({
                 user,
-                date,
+                date ,
                 products
             })
-            res.status(200).send(cart)
+            let createdCart = await Carts.findOne({user, saleFinished:false})
+            res.status(200).send(createdCart)
         }else {
-            const cart = await Carts.findOneAndUpdate({user, saleFinished:false}, {
+            let oldCart = await Carts.findOne({user, saleFinished:false});
+            let oldProducts = oldCart.products;
+            console.log(products);
+            for (let i = 0; i < products.length; i++) {
+                if(oldProducts.find((p)=> p.name === products[i].name && p.sizes === products[i].sizes)){
+                    let productToChange = oldProducts.find((p)=> p.name === products[i].name && p.sizes === products[i].sizes);
+                    let index = oldProducts.indexOf(productToChange);
+                    oldProducts[index] = {...oldProducts[index],
+                    quantity: oldProducts[index].quantity + products[i].quantity
+                    }
+                } else {
+                    oldProducts.push(products[i])
+                }
+            }
+            await Carts.findOneAndUpdate({user, saleFinished:false}, {
                 date, 
-                products
+                products: oldProducts
             })
-            res.status(200).send(cart)
+            let newCart = await Carts.findOne({user, saleFinished:false})
+            res.status(200).send(newCart)
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+const logIn = async(req,res)=> {
+    let {user, products} = req.body;
+    try {
+        if(products[0]){
+            const cart = await Carts.findOneAndUpdate({user, saleFinished:false}, 
+                {products})
+        }
+        const newCart = await Carts.findOne({user, saleFinished:false});
+        res.status(200).send(newCart)
+    } catch (error) {
+     console.log(error);
+    }
+}
+const deleteFromCart = async(req,res) => {
+    let {user, name, sizes} = req.body;
+    try {
+        let oldCart = await Carts.findOne({user, saleFinished: false});
+        if(oldCart){
+            let products = oldCart.products;
+            let newProd = products.filter((p)=> p.name !== name && p.sizes !== sizes || p.sizes !== sizes && p.name === name || p.name !== name && p.sizes === sizes)
+            await Carts.findOneAndUpdate({user, saleFinished:false},
+                {products: newProd})
+                let updated = await Carts.findOne({user, saleFinished:false})
+            res.status(200).send(updated)
         }
     } catch (error) {
         console.log(error);
@@ -44,29 +90,33 @@ const createCart = async(req,res)=> {
 }
 
 const manageCart = async(req,res)=> {
-    let { user, name , size, sign } = req.body;
+    let { user, name , sizes, sign, stock } = req.body;
     try {
         let oldCart = await Carts.findOne({user, saleFinished: false});
         if(oldCart){
             let products = oldCart.products;
             let index = products.find((p)=> p.name === name
-            || p.size === size);
-            console.log(index);
+            && p.sizes === sizes);
             let i = products.indexOf(index)
-            console.log(i);
             if(sign === "+"){
-                products[i] = {...products[i],
-                quantity: products[i].quantity + 1} 
+                if(stock >= products[i].quantity){
+                    products[i] = {...products[i],
+                    quantity: products[i].quantity + 1} 
+                }
             }
             if(sign === "-"){
-                products[i] = {...products[i],
-                quantity: products[i].quantity - 1} 
+                if(products[i].quantity > 1){
+                    products[i] = {...products[i],
+                    quantity: products[i].quantity - 1} 
+                }
             }
             let newCart = await Carts.findOneAndUpdate({user, saleFinished:false},
                 {
                     products: products
                 })
-            res.status(200).send(newCart);
+            
+            let actualizado = await Carts.findOne({user, saleFinished:false})
+            res.status(200).send(actualizado);
         }
     } catch (error) {
         console.log(error);
@@ -86,4 +136,4 @@ const checkSale = async(req,res) => {
 }
 
 
-module.exports = {createCart, checkSale, getCarts, getCartByUser, manageCart}
+module.exports = {createCart, checkSale, getCarts, getCartByUser, manageCart ,deleteFromCart, logIn}

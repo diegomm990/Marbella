@@ -5,7 +5,9 @@ const {
     createCart,
     checkSale,
     getCartByUser,
-    manageCart
+    manageCart,
+    deleteFromCart,
+    logIn
 } = require("../Controllers/Cart")
 
 router.get("/", getCarts)
@@ -13,5 +15,7 @@ router.post("/createCart", createCart)
 router.post('/checkSale/:id', checkSale)
 router.get('/getCartByUser/:id', getCartByUser)
 router.post('/manageCart', manageCart)
+router.post('/deleteFromCart', deleteFromCart)
+router.post('/logIn', logIn)
 
 module.exports = router;
