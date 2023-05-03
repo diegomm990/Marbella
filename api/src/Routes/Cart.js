@@ -7,7 +7,9 @@ const {
     getCartByUser,
     manageCart,
     deleteFromCart,
-    logIn
+    logIn,
+    getCartById,
+    replaceCart
 } = require("../Controllers/Cart")
 
 router.get("/", getCarts)
@@ -17,5 +19,7 @@ router.get('/getCartByUser/:id', getCartByUser)
 router.post('/manageCart', manageCart)
 router.post('/deleteFromCart', deleteFromCart)
 router.post('/logIn', logIn)
+router.get('/getCartById/:id', getCartById)
+router.post('/replaceCart', replaceCart)
 
 module.exports = router;

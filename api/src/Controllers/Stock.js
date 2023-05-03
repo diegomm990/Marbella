@@ -22,14 +22,16 @@ const createStock = async(req,res) => {
     }
 }
 const manageStock = async(req,res)=> {
-    let {name, size, quantity} = req.body;
+    let products = req.body;
     try {
-        let oldStock = await Stock.findOne({name,size})
-        let oldQuan = oldStock.quantity;
-        let stockUpdt = await Stock.findOneAndUpdate({name, size}, {
-            quantity: oldQuan - quantity
-        })
-        res.status(200).send(stockUpdt)
+        for (let i = 0; i < products.length; i++) {
+            let oldStock = await Stock.findOne({name: products[i].name,size: products[i].sizes})
+            let oldQuan = oldStock.quantity;
+            await Stock.findOneAndUpdate({name: products[i].name, size: products[i].sizes}, {
+                quantity: oldQuan - products[i].quantity
+            })
+        }
+        res.status(200).send("Stock actualizado")
     } catch (error){
         console.log(error);
     }

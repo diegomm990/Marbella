@@ -3,7 +3,6 @@ const { Schema, model, default: mongoose, Types } = require("mongoose");
 const CartsSchema = new Schema({
     user: {
         type: mongoose.Types.ObjectId,
-        required: true,
         ref: "Users"
     },
     date: {

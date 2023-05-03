@@ -4,6 +4,7 @@ const Stock = require('./Stock');
 const Users = require('./Users');
 const Sales = require('./Sales');
 const Carts = require('./Cart');
+const Mail = require('./Mail');
 const PaymentService = require('../Services/Payment');
 const PaymentController = require("../Controllers/Payment");
 const PaymentInstance = new PaymentController(new PaymentService());
@@ -19,5 +20,6 @@ router.use('/stock', Stock)
 router.use('/users', Users)
 router.use('/sales', Sales)
 router.use('/cart', Carts)
+router.use('/mail', Mail)
 
 module.exports = router;
