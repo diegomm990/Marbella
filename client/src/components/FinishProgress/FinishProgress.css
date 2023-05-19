@@ -1,0 +1,86 @@
+.Finish-Account-Header {
+  display: flex;
+  flex-direction: column;
+}
+.Finish-Logo-Image {
+  height: 2rem;
+  width: 10rem;
+}
+.Finish-Purchase-Progress {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+}
+.Progress-1,
+.Progress-2,
+.Progress-3 {
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  border: none;
+}
+.Progress-Lines {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Progress-Line {
+  position: absolute;
+  right: 0;
+  width: 33%;
+  height: 0.3rem;
+  background-color: grey;
+}
+.Progress-Line-Left {
+  position: absolute;
+  left: 0;
+  width: 33%;
+  height: 0.3rem;
+  background-color: grey;
+  margin: 0;
+}
+.Progress-Circle-Active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 3px solid black;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  z-index: 3;
+}
+.Progress-Circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 3px solid grey;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  color: grey;
+  z-index: 3;
+}
+.Progress-Text {
+  color: grey;
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  height: 2rem;
+  text-align: center;
+}
+.Progress-Text-Active {
+  color: black;
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  height: 2rem;
+  text-align: center;
+}
+/* .Finish-Purchase-Information {
+  } */

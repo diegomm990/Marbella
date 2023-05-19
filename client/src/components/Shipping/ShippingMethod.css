@@ -1,0 +1,23 @@
+.ShippingMethod {
+  display: flex;
+  flex-direction: column;
+  width: calc(92% - 4rem);
+  padding: 0 2rem;
+  margin-top: 1rem;
+}
+.ShippingMethod-Block {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid grey;
+  border-radius: 8px;
+  padding: 0 1rem;
+  width: 100%;
+}
+.Shipping-Method-Text {
+  display: flex;
+}
+@media screen and (max-width: 868px) {
+  .ShippingMethod {
+    width: calc(90% - 4rem);
+  }
+}

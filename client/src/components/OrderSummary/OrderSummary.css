@@ -1,0 +1,23 @@
+.Order-Summary {
+  display: none;
+}
+@media screen and (max-width: 868px) {
+  .Order-Summary {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .Order-Summary-Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+  }
+  .Order-Summary-Text {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,58 @@
+.Review-Data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12vh;
+}
+
+.Review-Data-Loged-Btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    height: 3rem;
+    font-size: 1.1rem;
+    background-color: black;
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+    transition: 350ms;
+}
+.Review-Data-Loged-Btn-No {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    height: 3rem;
+    font-size: 1.1rem;
+    background-color: black;
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+    transition: 350ms;
+    cursor: not-allowed;
+}
+.Review-Data-Loged-Btn:hover {
+    background-color: whitesmoke;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    transition: 350ms;
+}
+.Review-Cart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 35vw;
+}
+.Review-Cart-Image {
+    width: 4rem;
+}
+@media screen and (max-width: 868px) {
+    .Review-Data-Loged {
+        width: 80vw;
+    }
+    .Review-Cart{
+        width: 80vw;
+    }
+}

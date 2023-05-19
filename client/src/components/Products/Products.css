@@ -1,0 +1,254 @@
+.Products {
+  padding-top: 15vh;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  margin-bottom: 20vh;
+  width: calc(100%-2rem);
+  background-color: whitesmoke;
+  /* height: 30rem; */
+}
+.background {
+  background-color: whitesmoke;
+}
+.Products-Big {
+  width: 20rem;
+  background-color: inherit;
+  /* border: 1px solid black; */
+  margin: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.Products-Product-Image-Cont {
+  background: inherit;
+  position: relative;
+  width: 90%;
+  min-height: 15rem;
+  display: flex;
+  justify-content: center;
+}
+.Products-Product-Image {
+  width: 90%;
+}
+.Products-Product {
+  width: 80%;
+  background-color: inherit;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  /* margin-left: 2rem; */
+}
+.Products-Product-Name {
+  background: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.Products-Product-Category {
+  background: inherit;
+  font-size: 0.9rem;
+  font-weight: 300;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.Products-Product-Prices {
+  background: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+  margin-top: 0.5rem;
+}
+.Products-Product-Price {
+  background-color: inherit;
+  text-decoration: line-through;
+  color: red;
+  font-weight: 400;
+}
+.Products-Product-Discount {
+  background: inherit;
+}
+.Display-None {
+  display: none;
+}
+.Products-Product-Image-Cont-Discount {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 5.5rem;
+  height: 2rem;
+  background-color: whitesmoke;
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  padding: 0 0.2rem;
+}
+.Discount-Icon {
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  color: red;
+}
+.Product-Add-To-Bag {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border-radius: 4px;
+  width: 80%;
+  height: 40%;
+  bottom: 1rem;
+  margin: 0 1rem;
+}
+.Opacity {
+  background-color: rgb(245, 233, 233);
+  opacity: 0.7;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  position: absolute;
+}
+.Buttons-Add-To-Bag {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: transparent;
+  width: 80%;
+  z-index: 9;
+}
+.Button-Add-To-Bag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: 350ms;
+  cursor: pointer;
+}
+.Button-Add-To-Bag:hover {
+  background-color: black;
+  color: white;
+  transition: 350ms;
+}
+.Button-No-Add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: 350ms;
+  cursor: not-allowed;
+}
+.Add-To-Bag-Header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 65%;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  background: transparent;
+  z-index: 9;
+}
+.Add-To-Bag-Icon {
+  display: flex;
+  margin: 0 0.5rem;
+  font-size: 1.2rem;
+  background: transparent;
+}
+.lds-facebook {
+  width: 18rem;
+  height: 19.5rem;
+  background-color: white;
+}
+@keyframes animate {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+.loaders {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  list-style: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* height: 20rem; */
+  width: 21rem;
+  height: 26rem;
+  margin: 0;
+  background-color: whitesmoke;
+  z-index: 8;
+}
+.loader {
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-gap: 15px;
+  grid-template-rows: 15rem 2rem 2rem 30px;
+  justify-items: center;
+  padding: 10px;
+  width: 90%;
+  background-color: whitesmoke;
+}
+.animation {
+  animation: animate 1.5s linear 1s infinite;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-color: whitesmoke;
+  background-size: 800px 100px;
+  width: 100%;
+}
+
+@media screen and (max-width: 868px) {
+  .Products {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 668px) {
+  .Products {
+    display: flex;
+    /* grid-template-columns: auto; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .Products-Big {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .Products-Product {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+  .Product-Add-To-Bag {
+    display: none;
+  }
+}

@@ -1,0 +1,43 @@
+.MyPurchases {
+    margin-top: 12vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.MyPurchases-Block-No {
+    display: none;
+}
+.MiniSale-MyPur {
+    display: flex;
+    justify-content: space-around;
+    width: 70vw;
+}
+.MyPur-Button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    margin-top: 1rem;
+    width: 10rem;
+    height: 2.5rem;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    transition: 300ms;
+}
+.MyPur-Button:hover {
+    background: white;
+    color: black;
+    border: 1px solid black;
+    transition: 300ms;
+}
+h4 {
+    font-size: 0.85rem;
+}
+
+@media screen and (max-width: 868px) {
+    .MiniSale-MyPur {
+        width: 95vw;
+    }
+}

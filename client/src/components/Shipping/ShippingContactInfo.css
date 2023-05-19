@@ -1,0 +1,65 @@
+.Shipping-Contact-Info {
+  display: flex;
+  flex-direction: column;
+  width: calc(90% - 4rem);
+  border: 1px solid grey;
+  border-radius: 8px;
+  padding: 0 2rem;
+  margin-left: 1.5rem;
+}
+.Shipping-Contact-Block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.Shipping-Contact-Block-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid grey;
+}
+.Shipping-Contact-Mail {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.Shipping-Contact-Shipping {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.Shipping-Contact-Title {
+  font-weight: 500;
+}
+.Shipping-Contact-Info-Block {
+  width: 60%;
+  font-weight: 500;
+}
+.Shipping-Contact-Info-Block-1 {
+  width: 80%;
+  font-weight: 500;
+}
+.Shipping-Contact-Change {
+  font-size: 0.8rem;
+  text-decoration: underline;
+}
+.Display-None {
+  display: none;
+}
+@media screen and (max-width: 868px) {
+  .Shipping-Contact-Info {
+    padding: 0 1rem;
+    margin-top: 2rem;
+  }
+  .Shipping-Contact-Title {
+    margin: 0;
+    padding: 1rem 0 0 0;
+  }
+  .Shipping-Contact-Mail {
+    flex-direction: column;
+  }
+}

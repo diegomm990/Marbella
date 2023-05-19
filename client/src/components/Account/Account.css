@@ -1,0 +1,134 @@
+h1 {
+  font-size: 2rem;
+}
+.Account-Main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem;
+  width: 100%;
+  height: 100vh;
+}
+.Account-Account {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+}
+.Account-Info {
+  display: flex;
+  width: 30%;
+  height: calc(100% - 2rem);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 2rem;
+}
+.Account-Orders {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 70%;
+  height: calc(100% - 2rem);
+  padding-top: 0rem;
+}
+.Account-Name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+}
+.Account-Name-Complete {
+  font-weight: 600;
+  height: 1.5rem;
+}
+.Account-Name-Email {
+  font-size: 0.8rem;
+  height: 1.5rem;
+}
+.Account-Name-Logo {
+  width: 1.7rem;
+  height: 1.7rem;
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  background-color: black;
+}
+.Account-Log-Out {
+  text-decoration: underline;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.Account-Addresses {
+  margin-top: 1rem;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.Account-Addresses-Title {
+  font-size: 1.1rem;
+  height: 1rem;
+}
+.Account-Addresses-Button {
+  text-decoration: underline;
+  border: none;
+  font-size: 0.85rem;
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  cursor: pointer;
+}
+.Account-Address {
+  border: 1px solid black;
+  width: 90%;
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+.Account-Orders-Box {
+  width: 100%;
+  height: 100%;
+}
+.Account-Orders-Empty {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Account-Orders-Empty-Title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.Account-Orders-Empty-Text {
+  font-size: 0.8rem;
+}
+@media screen and (max-width: 868px) {
+  .Account-Title {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  .Account-Account {
+    flex-direction: column;
+  }
+  .Account-Info {
+    width: 100%;
+  }
+  .Account-Name {
+    width: 80%;
+  }
+  .Display-None {
+    display: none;
+  }
+}

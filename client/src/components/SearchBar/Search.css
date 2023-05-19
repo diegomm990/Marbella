@@ -1,0 +1,287 @@
+.Search {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 30%;
+  top: 0;
+  z-index: 13;
+  background-color: white;
+  animation: Search-animation-1 0.5s ease;
+}
+@keyframes Search-animation-1 {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+.Search-Out {
+  animation: Search-animation-out 0.5s ease;
+}
+@keyframes Search-animation-out {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+.Search-Out-Products {
+  animation: Search-animation-out-products 0.8s ease;
+}
+@keyframes Search-animation-out-products {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-300%);
+  }
+}
+.Search-Header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 6rem;
+  width: 100%;
+  border-bottom: 0.8px solid rgb(194, 191, 191);
+}
+.Search-Arrow-Back {
+  visibility: hidden;
+}
+.Search-Cross-Icon {
+  margin: 1rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+.Search-Search-Block {
+  width: 25%;
+  font-size: 0.85rem;
+  padding-left: 1rem;
+  height: 2.5rem;
+  background-color: rgb(243, 242, 242);
+  display: flex;
+  border-radius: 4px;
+  border: 0.5px solid white;
+}
+.Search-Search-Block:focus {
+  border: 0.5px solid grey;
+  outline: none;
+}
+.Search-Body {
+  display: flex;
+  flex-direction: row;
+  width: 75%;
+}
+.Search-Trending-Body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+.Search-Trending-Title {
+  background-color: white;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.Search-Trends {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding-left: 1rem;
+}
+.Search-Trend {
+  display: flex;
+  background-color: rgb(228, 222, 222);
+  height: 1.5rem;
+  align-items: center;
+  margin-right: 0.6rem;
+  padding: 0 0.5rem;
+}
+.Search-Recently-Viwed {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.Search-Recently-Viwed-Clear {
+  border: none;
+  font-weight: 600;
+  background-color: rgb(228, 222, 222);
+  border-radius: 8px;
+  margin-left: 0.5rem;
+}
+.Visibility-Hidden {
+  visibility: hidden;
+}
+.Search-Products {
+  position: absolute;
+  top: 6.1rem;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+}
+.Search-Products-Products {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+}
+.Search-Products-Names {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.Search-Products-Names-Title {
+  font-size: 1rem;
+  width: 90%;
+  border-bottom: 0.5px solid grey;
+  font-weight: 600;
+}
+.Search-Products-Body {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 1rem;
+}
+.Products-Name-List {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 90%;
+}
+.Listname-Name {
+  text-decoration: none;
+  color: black;
+}
+@media screen and (max-width: 868px) {
+  .Search {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: 13;
+    background-color: white;
+    animation: Search-animation-in-mini 0.5s ease;
+  }
+  @keyframes Search-animation-in-mini {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+  .Search-Out {
+    animation: Search-animation-out-mini 0.5s ease;
+  }
+  @keyframes Search-animation-out-mini {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  .Search-Header {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 5rem;
+  }
+  .Search-Arrow-Back {
+    font-size: 1.8rem;
+    background-color: transparent;
+    margin: 1rem;
+    visibility: visible;
+  }
+
+  .Search-Cross-Icon {
+    visibility: hidden;
+  }
+  .Search-Search-Block {
+    width: 75%;
+    font-size: 1rem;
+    padding-left: 1rem;
+    height: 2.5rem;
+    background-color: rgb(228, 222, 222);
+    display: flex;
+    border-radius: 4px;
+    border: 0.5px solid white;
+  }
+  .Search-Search-Block:focus {
+    border: 0.5px solid grey;
+    outline: none;
+  }
+  .Search-Body {
+    background-color: white;
+    height: 3rem;
+    width: 100%;
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  .Search-Trending-Body {
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    /* border: 1px solid blue; */
+  }
+  .Search-Trending-Title {
+    /* border: 1px solid green; */
+    width: 30%;
+  }
+  .Search-Trends {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 0;
+    /* border: 1px solid red; */
+  }
+  .Search-Trend {
+    display: flex;
+    background-color: rgb(228, 222, 222);
+    height: 2rem;
+    align-items: center;
+    margin-right: 0.6rem;
+    padding: 0 0.5rem;
+    width: 25%;
+  }
+  .Search-Products {
+    flex-direction: column;
+    overflow: auto;
+  }
+  .Search-Products-Names {
+    width: 90%;
+  }
+  .Search-Products-Body {
+    width: 90%;
+    margin-left: 10%;
+  }
+  .Search-Products-Products {
+    width: 100%;
+    grid-template-columns: 80%;
+  }
+  .Search-Recently-Viwed {
+    display: none;
+  }
+}

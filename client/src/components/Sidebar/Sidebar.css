@@ -1,0 +1,115 @@
+.Sidebar {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transition: 500ms;
+  z-index: 12;
+  animation: Sidebar-animation-in-mini 0.5s ease;
+}
+@keyframes Sidebar-animation-in-mini {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+.Sidebar-Out {
+  animation: Sidebar-animation-out-mini 0.5s ease;
+}
+@keyframes Sidebar-animation-out-mini {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.Sidebar-Head {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
+.Sidebar-Head-Icon {
+  margin: 1rem 1rem;
+}
+.Sidebar-Menu {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+.Sidebar-Shop {
+  font-size: 1.2rem;
+  margin-left: 1rem;
+}
+.Sidebar-Search {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+.Sidebar-Search-Block {
+  width: 90%;
+  margin-left: 1rem;
+  height: 2.5rem;
+  background-color: rgb(228, 222, 222);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 4px;
+}
+.Sidebar-Search-Icon {
+  font-size: 1.5rem;
+  background-color: transparent;
+  margin: 0 1rem;
+}
+.Sidebar-Selector {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.Sidebar-Products-Selector-Big {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.Sidebar-Products-Selector {
+  width: 90%;
+  height: 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  font-weight: 700;
+}
+.Sidebar-Selector-Icon {
+  font-size: 1.4rem;
+  margin-right: 0.5rem;
+}
+.Sidebar-Selector-Options {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+.Sidebar-Selector-Options-Off {
+  display: none;
+}
+.Sidebar-Selector-Option {
+  display: flex;
+  width: 100%;
+  height: 2.5rem;
+  align-items: center;
+  color: grey;
+  border-bottom: 0.5px solid grey;
+}

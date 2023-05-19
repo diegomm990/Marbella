@@ -1,0 +1,21 @@
+.Payment {
+  display: flex;
+}
+.Payment-Info-Section {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgb(236, 229, 229);
+  height: 100%;
+  padding: 3rem 0 0 2rem;
+  width: calc(55% - 4rem);
+}
+@media screen and (max-width: 868px) {
+  .Payment-Info-Section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 0 0 1rem;
+    width: calc(100% - 1rem);
+    border-right: none;
+  }
+}

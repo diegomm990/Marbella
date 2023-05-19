@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
+.NavBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  padding-right: 3rem;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  width: 100%;
+}
+.NavBar-No {
+  display: none;
+}
+.NavBar-Logo {
+  width: 15rem;
+  display: flex;
+  justify-content: center;
+}
+.NavBar-Logo-Link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.NavBar-Logo-Image {
+  width: 10rem;
+}
+.NavBar-Categories {
+  font-family: "Montserrat", sans-serif;
+  width: 25rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.NavBar-Categories-Link {
+  display: inline-block;
+  padding: 0.5rem;
+  margin: 1em;
+  /*   border-radius: 5px; */
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  /* Set up the hover */
+  /* If you aren't using autoprefix, remember to prefix the gradient for other browsers */
+  background-image: linear-gradient(black, black),
+    linear-gradient(transparent, transparent);
+  background-size: 0 2px, auto;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  transition: all 0.3s ease-out;
+}
+
+.NavBar-Categories-Link:hover {
+  /* The following line makes the underline only as wide as the text */
+  /* background-size: calc(100% - 2em) 5px, auto; */
+  background-size: 100% 2px, auto;
+}
+.NavBar-User {
+  width: 10rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 1.25rem;
+  padding-right: 2rem;
+}
+.NavBar-Icons {
+  cursor: pointer;
+}
+.NavBar-Bars {
+  display: none;
+}
+.NavBar-Bag-Manage {
+  position: relative;
+}
+.Cart-Quantity {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -0.3rem;
+  right: -0.5rem;
+  width: 0.85rem;
+  height: 0.85rem;
+  padding: 0.1rem;
+  border-radius: 50%;
+  font-size: 0.6rem;
+  font-weight: 600;
+  background-color: #007db5;
+  color: white;
+  border: 0.2px solid white;
+}
+.Courtain {
+  width: 100%;
+  top: 0;
+  height: 100%;
+  position: fixed;
+  background-color: grey;
+  opacity: 0.4;
+  z-index: 10;
+}
+.Courtain-No {
+  display: none;
+}
+.Display-None {
+  display: none;
+}
+@media screen and (max-width: 868px) {
+  .NavBar {
+    width: 100%;
+  }
+  .NavBar-Logo {
+    width: 8rem;
+  }
+  .NavBar-Logo-Image {
+    width: 7rem;
+  }
+  .NavBar-Categories {
+    display: none;
+  }
+  .NavBar-Bars {
+    display: flex;
+    width: 4rem;
+    font-size: 1.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .NavBar-User {
+    width: 6rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 1.1rem;
+    padding-right: 0.5rem;
+  }
+}

@@ -1,0 +1,166 @@
+.Finish-Purchase {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 100vh;
+}
+.Finish-Account-Information {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgb(236, 229, 229);
+  height: 100%;
+  padding: 3rem 0 0 4rem;
+  width: calc(55% - 4rem);
+}
+.Finish-No-User {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgb(236, 229, 229);
+  min-height: 100%;
+  padding: 3rem 0 0 2rem;
+  width: calc(55% - 4rem);
+  overflow: auto;
+}
+.Finish-Account-Name {
+  width: 45%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.Finish-Account-Name-Logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  color: white;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+.Finish-Account-Address {
+  display: flex;
+  width: 80%;
+  justify-content: flex-start;
+  align-items: center;
+}
+.Finish-Account-Checkbox {
+  display: flex;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 2rem;
+  border-radius: 50%;
+}
+.Finish-Add-Address {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  text-decoration: underline;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  cursor: pointer;
+}
+.Button-Finish-Container {
+  height: 5rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.Finish-Purchase-Continue {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3rem;
+  padding: 0.7rem 2rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  height: 2.5rem;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  transition: 300ms;
+  cursor: pointer;
+}
+.Finish-Purchase-Continue:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+.Form-Name-Input {
+  width: 90%;
+  height: 2rem;
+  border: 0.8px solid grey;
+  border-radius: 4px;
+  padding-left: 1rem;
+}
+.Form-Name-Input-Wrong {
+  width: 90%;
+  height: 2rem;
+  border: 0.8px solid red;
+  border-radius: 4px;
+  padding-left: 1rem;
+}
+.Form-Name-Select {
+  width: calc(90% + 1rem + 1.6px);
+  height: calc(2rem + 1.6px);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  padding-left: 1rem;
+}
+.Form-Name-Select-Wrong {
+  width: calc(90% + 1rem + 1.6px);
+  height: calc(2rem + 1.6px);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  padding-left: 1rem;
+  border: 0.8px solid red;
+}
+.Display-None {
+  display: none;
+}
+@media screen and (max-width: 868px) {
+  .Finish-Purchase {
+    flex-direction: column;
+    width: 100%;
+  }
+  .Finish-Account-Information {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 0 0 2rem;
+    width: calc(100% - 3rem);
+  }
+  .Finish-Account-Info {
+    width: 100%;
+  }
+  .Finish-Account-Name {
+    width: 80%;
+  }
+  .Button-Finish-Container {
+    justify-content: flex-start;
+  }
+  .Finish-No-User {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgb(236, 229, 229);
+    min-height: 100%;
+    padding: 3rem 0 0 2rem;
+    width: calc(100% - 4rem);
+    overflow: auto;
+  }
+}
+@media screen and (max-width: 300px) {
+  .Finish-Account-Information {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0 0 1rem;
+    width: calc(100% - 1rem);
+  }
+  .Finish-Account-Name {
+    width: 100%;
+  }
+}

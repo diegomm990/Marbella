@@ -1,0 +1,12 @@
+.Purchase-Finished {
+  display: flex;
+  flex-direction: row;
+}
+.Purchase-Info-Section {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgb(236, 229, 229);
+  height: 100%;
+  padding: 2rem 0 0 2rem;
+  width: calc(55% - 2rem);
+}

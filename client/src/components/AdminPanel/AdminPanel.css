@@ -1,0 +1,10 @@
+.AdminPanel {
+    margin-top: 12vh;
+    display: flex;
+    justify-content: center;
+}
+.AdminPanel-True {
+    width: 75vw;
+    display: flex;
+    flex-direction: column;
+}
