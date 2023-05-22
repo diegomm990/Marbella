@@ -73,6 +73,7 @@
 .Finish-Purchase-Continue {
   display: flex;
   justify-content: center;
+  width: 100%;
   align-items: center;
   margin-right: 3rem;
   padding: 0.7rem 2rem;

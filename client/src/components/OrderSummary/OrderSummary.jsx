@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import * as IoIcons from "react-icons/io";
 import * as BsIcons from "react-icons/bs";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MiniProductFinish from "../FinishPurchase/MiniProductFinish";
 import "./OrderSummary.css";
+import { getSaleById } from "../../redux/actions/actions";
 
 let OrderSummary = ({ number }) => {
+  let dispatch = useDispatch();
   let [orderSummary, setOrderSummary] = useState(false);
   let cart = useSelector((state) => state.cart);
   let totalPrice = 0;

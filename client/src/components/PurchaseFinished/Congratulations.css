@@ -5,3 +5,16 @@
 .Congratulations-Title {
   margin-left: 1.5rem;
 }
+.Congratulations-Footer-Text {
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+}
+@media screen and (max-width: 868px) {
+  .Congratulations-Header {
+    width: 90%;
+    /* border: 1px solid black; */
+  }
+  .Congratulations-Footer-Text {
+    width: 90%;
+  }
+}

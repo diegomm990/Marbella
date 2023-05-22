@@ -1,6 +1,7 @@
 .Purchase-Finished {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 .Purchase-Info-Section {
   display: flex;
@@ -9,4 +10,10 @@
   height: 100%;
   padding: 2rem 0 0 2rem;
   width: calc(55% - 2rem);
+}
+@media screen and (max-width: 868px) {
+  .Purchase-Info-Section {
+    width: calc(100% - 2rem);
+    padding: 2rem 0 0 1rem;
+  }
 }
