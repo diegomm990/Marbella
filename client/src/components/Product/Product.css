@@ -74,6 +74,7 @@ p {
   text-align: center;
   font-size: 1.2rem;
   border: 1px solid black;
+  border-radius: 4px;
 }
 .Product-Quantity {
   display: flex-start;
@@ -90,6 +91,7 @@ p {
   height: 2.8rem;
   border: 1px solid black;
   margin-bottom: 1rem;
+  border-radius: 4px;
 }
 .Product-Quantity-Button {
   height: 2.5rem;
@@ -112,6 +114,8 @@ p {
   transition: 350ms;
   margin-top: 2rem;
   width: 90%;
+  cursor: pointer;
+  border-radius: 4px;
 }
 .Product-Cart-Button-No {
   height: 2.5rem;

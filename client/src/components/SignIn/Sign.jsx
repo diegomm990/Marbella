@@ -56,7 +56,7 @@ let Sign = () => {
       dispatch(logedUser(data));
       localStorage.setItem("user", JSON.stringify(data));
       dispatch(logIn());
-      // dispatch(logInUpdateCart({ user: data._id, products: newCart }));
+      dispatch(logInUpdateCart({ user: data._id, products: newCart }));
       localStorage.setItem("userLoged", true);
       window.location.replace("/");
     } catch (error) {

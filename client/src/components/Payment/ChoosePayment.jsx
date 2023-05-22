@@ -31,7 +31,12 @@ let ChoosePayment = () => {
         dispatch(createSale(saleObj)).then((e) =>
           localStorage.setItem("saleObj", JSON.stringify(e))
         );
-        dispatch(payment({ products: cartMercadoPago })).then((e) => {
+        dispatch(
+          payment({
+            products: cartMercadoPago,
+            shipping: finalCart.shippingPrice,
+          })
+        ).then((e) => {
           window.location.assign(e);
         });
       }, 300);

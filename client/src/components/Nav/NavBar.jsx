@@ -58,7 +58,7 @@ let NavBar = () => {
       dispatch(getCartByUser(userId));
       setCartUser(true);
     }
-    if (idInStorage && cart.length === 0 && !cartUser) {
+    if (!loged && idInStorage && cart.length === 0 && !cartUser) {
       dispatch(getCartById(idInStorage));
       setCartUser(true);
     }
@@ -108,14 +108,14 @@ let NavBar = () => {
             className="NavBar-Icons"
           />
         )}
-        <div className="NavBar-Bag-Manage">
-          <BsIcons.BsBag
-            className="NavBar-Icons"
-            onClick={() => {
-              popUpSet("Cart", true);
-              popUpSet("Courtain", true);
-            }}
-          />
+        <div
+          className="NavBar-Bag-Manage"
+          onClick={() => {
+            popUpSet("Cart", true);
+            popUpSet("Courtain", true);
+          }}
+        >
+          <BsIcons.BsBag className="NavBar-Icons" />
           <div className={cartProducts > 0 ? "Cart-Quantity" : "Display-None"}>
             {cartProducts}
           </div>

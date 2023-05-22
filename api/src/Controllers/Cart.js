@@ -37,7 +37,7 @@ const getCartById = async (req, res) => {
 const replaceCart = async (req, res) => {
   let { id, products } = req.body;
   try {
-    await Carts.findByIdAndUpdate(id, { products });
+    await Carts.findByIdAndUpdate(id, { products: products });
     let cart = await Carts.findById(id);
     res.status(200).send(cart);
   } catch (error) {

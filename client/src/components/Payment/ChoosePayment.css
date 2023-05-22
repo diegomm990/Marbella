@@ -47,6 +47,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .Finish-Payment-Continue:hover {
   background: white;

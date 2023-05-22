@@ -58,6 +58,7 @@
 .Cart-Cross-Icon {
   background-color: transparent;
   font-size: 1.3rem;
+  cursor: pointer;
 }
 .Cart-Body {
   display: flex;

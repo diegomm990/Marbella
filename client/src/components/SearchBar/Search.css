@@ -108,6 +108,7 @@
   align-items: center;
   margin-right: 0.6rem;
   padding: 0 0.5rem;
+  border-radius: 4px;
 }
 .Search-Recently-Viwed {
   display: flex;
@@ -265,6 +266,7 @@
     margin-right: 0.6rem;
     padding: 0 0.5rem;
     width: 25%;
+    font-size: 0.7rem;
   }
   .Search-Products {
     flex-direction: column;

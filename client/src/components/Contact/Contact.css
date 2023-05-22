@@ -1,87 +1,45 @@
-h1 {
-    font-size: 2rem;
-}
 .Contact-Main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 12vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .Contact-Contact {
-    display: flex;
-    flex-direction: column;
-    width: 70vw;
- }
-.Contact-Form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 2.5rem;
+  margin-top: 8vh;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
 }
-.Contact-Form-1 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 3rem;
-    width: 100%;
-    margin-bottom: 2rem;
+.Contact-Name-Input {
+  width: 90%;
+  height: 2rem;
+  border: 0.8px solid grey;
+  border-radius: 4px;
+  padding-left: 1rem;
 }
-.Contact-Form-Block-1 {
-    font-size: 1.4rem;
-    width: 47.5%;
-    padding-left: 1rem;
+.Contact-Text-Input {
+  width: 90%;
+  height: 5rem;
+  border: 0.8px solid grey;
+  border-radius: 4px;
+  padding: 0.5rem 0 0 1rem;
 }
-.Contact-Form-2 {
-    display: flex;
-    height: 3rem;
-    width: 100%;
-    margin-bottom: 2rem;
+.Contact-Contact-Button {
+  margin-top: 2rem;
+  width: 90%;
+  border-radius: 8px;
+  background: black;
+  color: white;
+  border: 0.8px solid white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  height: 2.2rem;
+  transition: 350ms;
+  cursor: pointer;
 }
-.Contact-Form-Block-2 {
-    font-size: 1.4rem;
-    width: 100%;
-    padding-left: 1rem;
-}
-.Contact-Form-3 {
-    display: flex;
-    height: 7rem;
-    width: 100%;
-    margin-bottom: 2rem;
-}
-.Contact-Form-Block-3 {
-    font-size: 1.4rem;
-    width: 100%;
-    padding-left: 1rem;
-}
-.Contact-Form-Button {
-    height: 3rem;
-    width: 12rem;
-    font-size: 1.5rem;
-    background-color: black;
-    color: white;
-    transition: 350ms;
-}
-.Contact-Form-Button:hover {
-    background-color: whitesmoke;
-    color: black;
-    border: 1px solid black;
-    transition: 350ms;
-}
-
-@media screen and (max-width: 868px) {
-    .Contact-Form-1 {
-        flex-direction: column;
-        height: 9.5rem;
-    }
-    .Contact-Form-Block-1 {
-        width: 95.5%;
-        font-size: 1.5rem;
-        height: 3.5rem;
-    }
-    .Contact-Form-Block-2 {
-        font-size: 1.5rem;
-        height: 3.5rem;
-    }
-    .Contact-Form-Block-3 {
-        font-size: 1.5rem;
-    }
+.Contact-Contact-Button:hover {
+  background: white;
+  color: black;
+  border: 0.8px solid black;
 }

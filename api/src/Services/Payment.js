@@ -1,16 +1,17 @@
 const axios = require("axios");
 const mercadopago = require("mercadopago");
+require("dotenv").config();
 
 class PaymentService {
   async createPayment(req, res) {
     const url = "https://api.mercadopago.com/checkout/preferences";
-    const { products } = req.body;
+    const { products, shipping } = req.body;
     const body = {
       items: [],
       back_urls: {
         failure: "http://192.168.1.39:3000/failure",
         pending: "http://192.168.1.39:3000/pending",
-        success: "http://192.168.1.39:3000/approvingSale",
+        success: `${process.env.URL}/approvingSale`,
       },
       auto_return: "approved",
     };
@@ -22,6 +23,13 @@ class PaymentService {
         unit_price: p.price,
       });
     });
+    if (shipping !== 0) {
+      body.items.push({
+        title: "Envio",
+        quantity: 1,
+        unit_price: shipping,
+      });
+    }
     const payment = await axios.post(url, body, {
       headers: {
         "Content-Type": "application/json",

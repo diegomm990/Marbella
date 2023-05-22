@@ -82,24 +82,22 @@ const Product = () => {
   };
   const submitForm = () => {
     // e.preventDefault();
-    var form = true;
-    let productForm = {
-      _id: product._id,
-      name: product.name,
-      price: product.price,
-      sizes: productData.sizes,
-      quantity: productData.quantity,
-      image: product.images[0],
-      stock: product[`stock${productData.sizes}`].quantity,
-    };
-    payload = {
-      ...payload,
-      products: [productForm],
-    };
-    if (productData["sizes"] === "-") {
-      form = false;
-    }
-    if (form) {
+    if (productData.sizes === "-") {
+      return alert("Elegi un talle");
+    } else {
+      let productForm = {
+        _id: product._id,
+        name: product.name,
+        price: product.price,
+        sizes: productData.sizes,
+        quantity: productData.quantity,
+        image: product.images[0],
+        stock: product[`stock${productData.sizes}`].quantity,
+      };
+      payload = {
+        ...payload,
+        products: [productForm],
+      };
       if (loged) {
         dispatch(createCart(payload)).then(
           setTimeout(() => {
@@ -123,8 +121,6 @@ const Product = () => {
           );
         }
       }
-    } else {
-      return alert("Elegi un talle");
     }
   };
   let changeImage1 = () => {

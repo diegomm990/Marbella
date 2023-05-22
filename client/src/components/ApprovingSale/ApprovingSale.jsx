@@ -31,7 +31,7 @@ let ApprovingSale = () => {
     dispatch(substractStock(sale.products));
   } else {
     setTimeout(() => {
-      window.location.replace("/congratulations");
+      window.location.replace("/purchaseFinished");
     }, 2000);
   }
 

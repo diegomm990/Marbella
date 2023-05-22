@@ -24,7 +24,9 @@ let Account = () => {
       let id = localStorage.getItem("id");
       dispatch(replaceCart({ id, products: cart }));
     } else {
-      dispatch(createCart({ products: cart }));
+      dispatch(createCart({ products: cart })).then((e) => {
+        localStorage.setItem("id", e._id);
+      });
     }
     setTimeout(() => {
       window.location.assign("/");
