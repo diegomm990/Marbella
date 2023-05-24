@@ -21,7 +21,7 @@ import {
 const initialState = {
   products: [],
   product: {},
-  porductSearch: [],
+  productSearch: [],
   cart: [],
   users: {},
   user: {},

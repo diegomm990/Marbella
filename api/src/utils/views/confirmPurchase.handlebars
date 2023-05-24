@@ -1,0 +1,40 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div>
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/marbelladb-ee6df.appspot.com/o/Logo.png?alt=media&token=af753207-9ec2-404f-9912-3aa776192663"
+        alt="logo"
+        style="width: 300px; heigth:700px"
+      />
+      <h2>Hola
+        {{user.name}}
+        {{user.lastname}}! Gracias por comprar en Marbella</h2>
+      <h3>Tu pedido: #{{order}}</h3>
+      <div>
+        {{products}}
+      </div>
+      <h3>Costo de envio: ${{shipping}},00</h3>
+      <h3>Descuento: ${{discount}},00</h3>
+      <h2>Total: ${{total}},00</h2>
+      <br />
+      <h3>Direccion de envio</h3>
+      <h3>Direccion: {{user.address.street}} {{user.address.number}}</h3>
+      <h3>Departamento: {{user.address.department}}</h3>
+      <h3>Localidad: {{user.address.locality}}</h3>
+      <h3>Provincia: {{user.address.province}}</h3>
+      <h3>Codigo Postal: {{user.address.zipCode}}</h3>
+      <h3>Pais: Argentina</h3>
+      {{! <h3>Segui el estado de tu pedido en este link:
+        <a
+          href="http://www.instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >www.instagram.com</a></h3> }}
+    </div>
+  </body>
+</html>

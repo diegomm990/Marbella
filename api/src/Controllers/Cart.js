@@ -94,6 +94,7 @@ const createCart = async (req, res) => {
         const cart = await Carts.findById(id);
         if (!cart) {
           let newCart = await Carts.create({
+            user: id,
             date,
             products,
           });
