@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ChoosePayment.css";
 import { useDispatch } from "react-redux";
-import { createSale, payment } from "../../redux/actions/actions";
+import { createSale, payment, saleTransfer } from "../../redux/actions/actions";
 import Spinner from "./Spinner";
 
 let ChoosePayment = () => {
@@ -15,6 +15,10 @@ let ChoosePayment = () => {
     address: finalCart.buyerData.address,
     products: finalCart.products,
   };
+  let totalPrice = 0;
+  for (let i = 0; i < finalCart.products.length; i++) {
+    totalPrice += finalCart.products[i].price;
+  }
   let finishPurchase = () => {
     setLoader(true);
     if (checked === "MP") {
@@ -44,9 +48,21 @@ let ChoosePayment = () => {
       dispatch(createSale(saleObj)).then((e) =>
         localStorage.setItem("saleObj", JSON.stringify(e))
       );
-      setTimeout(() => {
-        window.location.assign("/purchaseFinished");
-      }, 300);
+      let order = JSON.parse(localStorage.getItem("saleObj")).orderNumber;
+      dispatch(
+        saleTransfer({
+          user: finalCart.buyerData,
+          order: order,
+          products: finalCart.products,
+          shipping: finalCart.shippingPrice,
+          discount: totalPrice * 0.1,
+          total: totalPrice - totalPrice * 0.1 + finalCart.shippingPrice,
+        })
+      ).then(() => {
+        setTimeout(() => {
+          window.location.assign("/purchaseFinished");
+        }, 500);
+      });
     }
   };
   return (

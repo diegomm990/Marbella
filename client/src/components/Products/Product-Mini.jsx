@@ -24,6 +24,7 @@ const MiniProduct = (product) => {
   let [percentege, setPercentege] = useState("");
   let [off, setOff] = useState(false);
   let [addToBag, setAddToBag] = useState(false);
+  let loged = useSelector((state) => state.logIn);
   if (product.product.discount !== "" && discount === false) {
     setDiscount(true);
     setOff(true);
@@ -44,7 +45,7 @@ const MiniProduct = (product) => {
       image: product.product.images[0],
       stock: product.product[`stock${size}`].quantity,
     };
-    if (user._id) {
+    if (loged && user._id) {
       dispatch(createCart({ user: user._id, products: [productForm] })).then(
         setTimeout(() => {
           dispatch(getCartByUser(user._id));

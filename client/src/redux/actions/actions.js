@@ -374,3 +374,41 @@ export const addInfoSale = (payload) => {
     } catch (error) {}
   };
 };
+
+export const contactMail = (payload) => {
+  return async function () {
+    try {
+      let mail = await axios.put(
+        "http://localhost:3001/mail/contactForm",
+        payload
+      );
+      return "Tu comentario enviado con éxito";
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const saleTransfer = (payload) => {
+  return async function () {
+    try {
+      let mail = await axios.put(
+        "http://localhost:3001/mail/salePending",
+        payload
+      );
+      return "Compra finalizada";
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const saleCompleted = (payload) => {
+  return async function () {
+    try {
+      await axios.put("http://localhost:3001/mail/confirmPurchase", payload);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

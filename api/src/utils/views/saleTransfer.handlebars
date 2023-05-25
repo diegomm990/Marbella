@@ -1,0 +1,36 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div>
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/marbelladb-ee6df.appspot.com/o/Logo.png?alt=media&token=af753207-9ec2-404f-9912-3aa776192663"
+        alt="logo"
+        style="width: 300px; heigth:700px"
+      />
+      <h2>El usuario
+        {{user.name}}
+        {{user.lastname}}
+        realizo una compra con pago via transferencia bancaria.</h2>
+      <h2>El mail del usuario es: {{email}}</h2>
+      <h3>Su pedido: #{{order}}</h3>
+      <div>
+        {{products}}
+      </div>
+      <h3>Costo de envio: ${{shipping}},00</h3>
+      <h3>Descuento: ${{discount}},00</h3>
+      <br />
+      <h2>Total: ${{total}},00</h2>
+      <h3>Direccion de envio</h3>
+      <h3>Direccion: {{user.address.street}} {{user.address.number}}</h3>
+      <h3>Departamento: {{user.address.department}}</h3>
+      <h3>Localidad: {{user.address.locality}}</h3>
+      <h3>Provincia: {{user.address.province}}</h3>
+      <h3>Codigo Postal: {{user.address.zipCode}}</h3>
+      <h3>Pais: Argentina</h3>
+    </div>
+  </body>
+</html>

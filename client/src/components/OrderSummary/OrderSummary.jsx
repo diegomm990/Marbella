@@ -7,18 +7,26 @@ import "./OrderSummary.css";
 import { getSaleById } from "../../redux/actions/actions";
 
 let OrderSummary = ({ number }) => {
-  let dispatch = useDispatch();
   let [orderSummary, setOrderSummary] = useState(false);
   let cart = useSelector((state) => state.cart);
   let totalPrice = 0;
+  let [finalCart, setFinalCart] = useState({});
+  let totalPriceFinish = 0;
   for (let i = 0; i < cart.length; i++) {
     totalPrice += cart[i].price * cart[i].quantity;
+  }
+  if (finalCart !== {}) {
+    for (let i = 0; i < finalCart?.products?.length; i++) {
+      totalPriceFinish +=
+        finalCart.products[i].price * finalCart.products[i].quantity;
+    }
   }
   let [shippingPrice, setShippingPrice] = useState(0);
   useEffect(() => {
     if (number >= 2) {
-      let finalCart = JSON.parse(localStorage.getItem("finalCart"));
-      setShippingPrice(finalCart.shippingPrice);
+      let finalCartStore = JSON.parse(localStorage.getItem("finalCart"));
+      setFinalCart(finalCartStore);
+      setShippingPrice(finalCartStore.shippingPrice);
     }
   }, []);
   return (
@@ -32,13 +40,29 @@ let OrderSummary = ({ number }) => {
           <h4>Mira tu pedido</h4>
           <IoIcons.IoIosArrowDown />
         </div>
-        <h4>ARS ${totalPrice + shippingPrice},00</h4>
+        {number === 4 ? (
+          <h4>ARS ${totalPriceFinish + shippingPrice},00</h4>
+        ) : (
+          <h4>ARS ${totalPrice + shippingPrice},00</h4>
+        )}
       </div>
-      <div className={orderSummary ? "Order-Summary-Products" : "Display-None"}>
-        {cart?.map((p) => {
-          return <MiniProductFinish product={p} />;
-        })}
-      </div>
+      {number === 4 ? (
+        <div
+          className={orderSummary ? "Order-Summary-Products" : "Display-None"}
+        >
+          {finalCart?.products?.map((p) => {
+            return <MiniProductFinish product={p} />;
+          })}
+        </div>
+      ) : (
+        <div
+          className={orderSummary ? "Order-Summary-Products" : "Display-None"}
+        >
+          {cart?.map((p) => {
+            return <MiniProductFinish product={p} />;
+          })}
+        </div>
+      )}
     </div>
   );
 };

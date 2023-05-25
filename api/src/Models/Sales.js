@@ -7,29 +7,27 @@ const SalesSchema = new Schema({
   },
   user: {
     type: mongoose.Types.ObjectId,
-    required: true,
-    ref: 'Users'
+    ref: "Users",
   },
   address: {
     type: Object,
-    required: true
+    required: true,
   },
   products: {
     type: Array,
-    required: true
+    required: true,
   },
   approved: {
     type: Boolean,
     required: true,
-    default: false
+    default: false,
   },
   delivered: {
-    type : Boolean,
+    type: Boolean,
     required: true,
-    default: false
-  }
-}
-);
+    default: false,
+  },
+});
 
 const Sales = model("Sales", SalesSchema);
 module.exports = Sales;

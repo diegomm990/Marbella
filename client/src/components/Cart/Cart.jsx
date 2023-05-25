@@ -11,8 +11,9 @@ const Cart = () => {
   let { closePopUp } = useContext(AppContext);
   let cart = useSelector((state) => state.cart);
   let user = localStorage.getItem("user");
+  let loged = localStorage.getItem("logIn");
   // useEffect(() => {
-  if (user && cart.length === 0) {
+  if (loged && cart.length === 0) {
     let userId = JSON.parse(user)._id;
     dispatch(getCartByUser(userId));
   }

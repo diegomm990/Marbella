@@ -147,10 +147,10 @@ let FinishPurchase = () => {
             ...shippingInfo,
           },
         };
-        dispatch(addInfoSale({ id, buyerData: obj })).then((e) => {
-          localStorage.setItem("finalCart", e);
-        });
-        window.location.assign("/shipping");
+        dispatch(addInfoSale({ id, buyerData: obj }));
+        setTimeout(() => {
+          window.location.assign("/shipping");
+        }, 300);
         // console.log(obj);
       } else {
         alert("Completa todos los campos");

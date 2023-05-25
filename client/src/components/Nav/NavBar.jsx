@@ -53,7 +53,7 @@ let NavBar = () => {
     if (!cart.length) {
       setCartProducts(0);
     }
-    if (user && cart.length === 0 && !cartUser) {
+    if (loged && user && cart.length === 0 && !cartUser) {
       let userId = user._id;
       dispatch(getCartByUser(userId));
       setCartUser(true);
