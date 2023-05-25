@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Contact.css";
 import { contactMail } from "../../redux/actions/actions";
 import { useDispatch } from "react-redux";
+import { AppContext } from "../../AppContext/AppContext";
 
 const Contact = () => {
+  let { popUpSet } = useContext(AppContext);
   let dispatch = useDispatch();
   let [contactForm, setContactForm] = useState({
     name: "",
@@ -50,9 +52,13 @@ const Contact = () => {
       form = false;
     }
     if (!form) {
-      alert("Completa todos los campos");
+      popUpSet("Form", true);
+      popUpSet("Notification", true);
     } else {
-      dispatch(contactMail(contactForm)).then((e) => alert(e));
+      dispatch(contactMail(contactForm)).then(() => {
+        popUpSet("Comment", true);
+        popUpSet("Notification", true);
+      });
       emptyForm();
     }
   };

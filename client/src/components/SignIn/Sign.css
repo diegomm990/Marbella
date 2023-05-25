@@ -94,6 +94,14 @@
   display: flex;
   flex-direction: row;
 }
+.Sign-Input-Wrong {
+  width: 100%;
+  max-width: 20.8rem;
+  height: 2rem;
+  border: 0.8px solid red;
+  border-radius: 4px;
+  padding-left: 1rem;
+}
 @media screen and (max-width: 868px) {
   .Sign-Photo {
     display: none;

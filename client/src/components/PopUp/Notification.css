@@ -1,0 +1,31 @@
+.Notification-Container {
+  top: 0;
+  margin-top: 1rem;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  animation: Notification-animation-in-big 0.5s ease;
+  z-index: 20;
+  background-color: transparent;
+}
+@keyframes Notification-animation-in-big {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+.Notification-Out {
+  animation: Notification-animation-out-big 0.5s ease;
+}
+@keyframes Notification-animation-out-big {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Product.css";
 import {
@@ -12,8 +12,10 @@ import {
 } from "../../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import MiniProduct from "../Products/Product-Mini";
+import { AppContext } from "../../AppContext/AppContext";
 
 const Product = () => {
+  let { popUpSet } = useContext(AppContext);
   let dispatch = useDispatch();
   let paramsId = useParams();
   let product = useSelector((state) => state.product);
@@ -83,7 +85,8 @@ const Product = () => {
   const submitForm = () => {
     // e.preventDefault();
     if (productData.sizes === "-") {
-      return alert("Elegi un talle");
+      popUpSet("Size", true);
+      popUpSet("Notification", true);
     } else {
       let productForm = {
         _id: product._id,

@@ -1,0 +1,17 @@
+.Comment {
+  width: 30%;
+  height: 5rem;
+  background-color: white;
+  border: 0.8px solid grey;
+  border-radius: 8px;
+  /* z-index: 20; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+@media screen and (max-width: 868px) {
+  .Comment {
+    width: 90%;
+  }
+}

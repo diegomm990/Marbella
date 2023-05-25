@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Products.css";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import { Spinner } from "reactstrap";
@@ -10,9 +10,11 @@ import {
   getCartById,
   getCartByUser,
 } from "../../redux/actions/actions";
+import { AppContext } from "../../AppContext/AppContext";
 
 const MiniProduct = (product) => {
   let dispatch = useDispatch();
+  let { popUpNotification, popUpAdded, popUpSet } = useContext(AppContext);
   let imagen1 = product.product.images[0];
   let imagen2 = product.product.images[1];
   let stockM = product.product.stockM.quantity;
@@ -114,6 +116,8 @@ const MiniProduct = (product) => {
               onClick={() => {
                 if (stockM !== 0) {
                   addToCart("M");
+                  popUpSet("Added", true);
+                  popUpSet("Notification", true);
                 } else {
                   alert("No hay stock");
                 }
@@ -126,6 +130,8 @@ const MiniProduct = (product) => {
               onClick={() => {
                 if (stockL !== 0) {
                   addToCart("L");
+                  popUpSet("Added", true);
+                  popUpSet("Notification", true);
                 } else {
                   alert("No hay stock");
                 }
@@ -138,6 +144,8 @@ const MiniProduct = (product) => {
               onClick={() => {
                 if (stockXL !== 0) {
                   addToCart("XL");
+                  popUpSet("Added", true);
+                  popUpSet("Notification", true);
                 } else {
                   alert("No hay stock");
                 }

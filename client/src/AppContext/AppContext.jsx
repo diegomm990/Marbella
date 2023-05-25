@@ -7,6 +7,11 @@ const AppContextComponent = ({ children }) => {
   const [popUpSearch, setPopUpSearch] = useState(false);
   const [popUpCart, setPopUpCart] = useState(false);
   const [popUpCourtain, setPopUpCourtain] = useState(false);
+  const [popUpNotification, setPopUpNotification] = useState(false);
+  const [popUpAdded, setPopUpAdded] = useState(false);
+  const [popUpSize, setPopUpSize] = useState(false);
+  const [popUpForm, setPopUpForm] = useState(false);
+  const [popUpComment, setPopUpComment] = useState(false);
   const popUpSet = (popUp, state) => {
     eval(`setPopUp${popUp}(${state})`);
   };
@@ -54,6 +59,11 @@ const AppContextComponent = ({ children }) => {
         popUpSearch,
         popUpCart,
         popUpCourtain,
+        popUpNotification,
+        popUpAdded,
+        popUpSize,
+        popUpForm,
+        popUpComment,
         closePopUp,
         closePopUpCourtain,
       }}

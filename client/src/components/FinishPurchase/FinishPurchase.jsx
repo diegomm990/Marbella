@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./FinishPurchase.css";
 import FinishProgress from "../FinishProgress/FinishProgress";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,8 +12,10 @@ import * as IoIcons from "react-icons/io";
 import * as BsIcons from "react-icons/bs";
 import FinishSectionCart from "../FinishSectionCart/FinishSectionCart";
 import OrderSummary from "../OrderSummary/OrderSummary";
+import { AppContext } from "../../AppContext/AppContext";
 
 let FinishPurchase = () => {
+  let { popUpSet } = useContext(AppContext);
   let dispatch = useDispatch();
   let [userLoged, setUserLoged] = useState(false);
   let [user, setUser] = useState({});
@@ -153,7 +155,8 @@ let FinishPurchase = () => {
         }, 300);
         // console.log(obj);
       } else {
-        alert("Completa todos los campos");
+        popUpSet("Form", true);
+        popUpSet("Notification", true);
       }
     }
   };

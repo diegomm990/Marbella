@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Sign.css";
 import logo from "../Nav/Logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { logIn, logInUpdateCart, logedUser } from "../../redux/actions/actions";
+import { AppContext } from "../../AppContext/AppContext";
 
 let Sign = () => {
+  let { popUpSet } = useContext(AppContext);
   let dispatch = useDispatch();
   let user = useSelector((state) => state.user);
   let [sign, setSign] = useState(true);
@@ -40,50 +42,85 @@ let Sign = () => {
       [e.target.name]: e.target.value,
     });
   };
+  function isValidEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+  }
   let submitLogIn = async (e) => {
     e.preventDefault();
-    try {
-      setError(false);
-      const { data } = await axios.post(
-        "http://localhost:3001/users/loginUser",
-        logInData,
-        {
-          headers: {
-            "Content-type": "application/json",
-          },
-        }
-      );
-      dispatch(logedUser(data));
-      localStorage.setItem("user", JSON.stringify(data));
-      dispatch(logIn());
-      dispatch(logInUpdateCart({ user: data._id, products: newCart }));
-      localStorage.setItem("userLoged", true);
-      window.location.replace("/");
-    } catch (error) {
+    let form = true;
+    if (!isValidEmail(logInData.email)) {
+      form = false;
+    }
+    if (logInData.password.length < 6) {
+      form = false;
+    }
+    if (form) {
+      try {
+        setError(false);
+        const { data } = await axios.post(
+          "http://localhost:3001/users/loginUser",
+          logInData,
+          {
+            headers: {
+              "Content-type": "application/json",
+            },
+          }
+        );
+        dispatch(logedUser(data));
+        localStorage.setItem("user", JSON.stringify(data));
+        dispatch(logIn());
+        dispatch(logInUpdateCart({ user: data._id, products: newCart }));
+        localStorage.setItem("userLoged", true);
+        window.location.replace("/");
+      } catch (error) {
+        setError(true);
+      }
+    } else {
       setError(true);
+      popUpSet("Form", true);
+      popUpSet("Notification", true);
     }
   };
   let submitSignUp = async (e) => {
     e.preventDefault();
-    try {
-      const { data } = await axios.post(
-        "http://localhost:3001/users",
-        signUpData,
-        {
-          headers: {
-            "Content-type": "application/json",
-          },
-        }
-      );
-      dispatch(logedUser(data));
-      localStorage.setItem("user", JSON.stringify(data));
-      dispatch(logIn());
-      localStorage.setItem("userLoged", true);
-      setError(false);
-      dispatch(logInUpdateCart({ user: data._id, products: newCart }));
-      window.location.assign("/");
-    } catch (error) {
+    let form = true;
+    if (!isValidEmail(signUpData.email)) {
+      form = false;
+    }
+    if (signUpData.password.length < 6) {
+      form = false;
+    }
+    if (signUpData.name < 3) {
+      form = false;
+    }
+    if (signUpData.lastname < 3) {
+      form = false;
+    }
+    if (form) {
+      try {
+        const { data } = await axios.post(
+          "http://localhost:3001/users",
+          signUpData,
+          {
+            headers: {
+              "Content-type": "application/json",
+            },
+          }
+        );
+        dispatch(logedUser(data));
+        localStorage.setItem("user", JSON.stringify(data));
+        dispatch(logIn());
+        localStorage.setItem("userLoged", true);
+        setError(false);
+        dispatch(logInUpdateCart({ user: data._id, products: newCart }));
+        window.location.assign("/");
+      } catch (error) {
+        setError(true);
+      }
+    } else {
       setError(true);
+      popUpSet("Form", true);
+      popUpSet("Notification", true);
     }
   };
   return (
@@ -119,7 +156,7 @@ let Sign = () => {
               type="email"
               name="email"
               placeholder="Enter Email Address"
-              className="Sign-Input"
+              className={error ? "Sign-Input-Wrong" : "Sign-Input"}
               onChange={(e) => logInHandler(e)}
             />
             <h5>Password</h5>
@@ -127,7 +164,7 @@ let Sign = () => {
               type="password"
               name="password"
               placeholder="Enter Password"
-              className="Sign-Input"
+              className={error ? "Sign-Input-Wrong" : "Sign-Input"}
               onChange={(e) => logInHandler(e)}
             />
             <button className="Sign-LogIn-Button">LOGIN</button>
@@ -139,7 +176,7 @@ let Sign = () => {
               type="email"
               name="email"
               placeholder="Enter Email Address"
-              className="Sign-Input"
+              className={error ? "Sign-Input-Wrong" : "Sign-Input"}
               onChange={(e) => SignUpHandler(e)}
             />
             <h5>Password</h5>
@@ -147,7 +184,7 @@ let Sign = () => {
               type="password"
               name="password"
               placeholder="Enter Password"
-              className="Sign-Input"
+              className={error ? "Sign-Input-Wrong" : "Sign-Input"}
               onChange={(e) => SignUpHandler(e)}
             />
             <h5>Nombre</h5>
@@ -155,7 +192,7 @@ let Sign = () => {
               type="text"
               name="name"
               placeholder="Enter Name"
-              className="Sign-Input"
+              className={error ? "Sign-Input-Wrong" : "Sign-Input"}
               onChange={(e) => SignUpHandler(e)}
             />
             <h5>Apellido</h5>
@@ -163,7 +200,7 @@ let Sign = () => {
               type="text"
               name="lastname"
               placeholder="Enter Lastname"
-              className="Sign-Input"
+              className={error ? "Sign-Input-Wrong" : "Sign-Input"}
               onChange={(e) => SignUpHandler(e)}
             />
             <div className="Sign-CheckBox">
