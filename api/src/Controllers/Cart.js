@@ -46,7 +46,7 @@ const replaceCart = async (req, res) => {
 };
 
 let addInfoToCart = async (req, res) => {
-  let { id, user, buyerData } = req.body;
+  let { id, user, buyerData, total, discount } = req.body;
   let cart;
   if (user) {
     if (buyerData.address.province === "Capital Federal") {
@@ -55,6 +55,8 @@ let addInfoToCart = async (req, res) => {
         {
           buyerData: buyerData,
           shippingPrice: 1500,
+          total,
+          discount,
         }
       );
     } else {
@@ -63,6 +65,8 @@ let addInfoToCart = async (req, res) => {
         {
           buyerData: buyerData,
           shippingPrice: 2500,
+          total,
+          discount,
         }
       );
     }
@@ -73,11 +77,15 @@ let addInfoToCart = async (req, res) => {
       await Carts.findByIdAndUpdate(id, {
         buyerData: buyerData,
         shippingPrice: 1500,
+        total,
+        discount,
       });
     } else {
       await Carts.findByIdAndUpdate(id, {
         buyerData: buyerData,
         shippingPrice: 2500,
+        total,
+        discount,
       });
     }
     cart = await Carts.findById(id);

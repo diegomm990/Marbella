@@ -7,9 +7,6 @@ import {
   getCartById,
   getCartIdByUser,
 } from "../../redux/actions/actions";
-import MiniProductFinish from "./MiniProductFinish";
-import * as IoIcons from "react-icons/io";
-import * as BsIcons from "react-icons/bs";
 import FinishSectionCart from "../FinishSectionCart/FinishSectionCart";
 import OrderSummary from "../OrderSummary/OrderSummary";
 import { AppContext } from "../../AppContext/AppContext";
@@ -21,7 +18,7 @@ let FinishPurchase = () => {
   let [user, setUser] = useState({});
   let id = localStorage.getItem("id");
   let [cartAvailable, setCartAvailable] = useState(false);
-  let [orderSummary, setOrderSummary] = useState(false);
+  // let [orderSummary, setOrderSummary] = useState(false);
   useEffect(() => {
     if (localStorage.getItem("user") && !userLoged) {
       setUser(JSON.parse(localStorage.getItem("user")));
@@ -41,6 +38,7 @@ let FinishPurchase = () => {
   for (let i = 0; i < cart.length; i++) {
     totalPrice += cart[i].price * cart[i].quantity;
   }
+  let discount = totalPrice * 0.1;
   let [checkStreet, setChecked] = useState(false);
   let [userInfo, setUserInfo] = useState({
     name: "",
@@ -92,7 +90,14 @@ let FinishPurchase = () => {
           address: shippingInfo,
         };
         // console.log({ user: user._id, buyerData: obj });
-        dispatch(addInfoSale({ user: user._id, buyerData: obj }));
+        dispatch(
+          addInfoSale({
+            user: user._id,
+            buyerData: obj,
+            total: totalPrice,
+            discount,
+          })
+        );
         setTimeout(() => {
           window.location.assign("/shipping");
         }, 300);
@@ -149,11 +154,12 @@ let FinishPurchase = () => {
             ...shippingInfo,
           },
         };
-        dispatch(addInfoSale({ id, buyerData: obj }));
+        dispatch(
+          addInfoSale({ id, buyerData: obj, total: totalPrice, discount })
+        );
         setTimeout(() => {
           window.location.assign("/shipping");
         }, 300);
-        // console.log(obj);
       } else {
         popUpSet("Form", true);
         popUpSet("Notification", true);
@@ -180,9 +186,6 @@ let FinishPurchase = () => {
                 <div className="AccoFinish-Accountunt-Name-Email">
                   {user.email}
                 </div>
-                {/* <button className="Account-Log-Out" onClick={() => logUserOut()}>
-                Log Out
-              </button> */}
               </div>
             </div>
             <div className="Finish-Account-Addresses">

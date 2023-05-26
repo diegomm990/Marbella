@@ -21,4 +21,14 @@
     width: 50%;
     justify-content: space-between;
   }
+  .Order-Discount {
+    margin-left: 5%;
+    display: flex;
+    width: 95%;
+    font-size: 0.8rem;
+    justify-content: space-between;
+  }
+  .Order-Discount-Text {
+    font-weight: 400;
+  }
 }

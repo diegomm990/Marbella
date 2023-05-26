@@ -23,6 +23,12 @@ const CartsSchema = new Schema({
   shippingPrice: {
     type: Number,
   },
+  total: {
+    type: Number,
+  },
+  discount: {
+    type: Number,
+  },
 });
 
 const Carts = model("Cart", CartsSchema);

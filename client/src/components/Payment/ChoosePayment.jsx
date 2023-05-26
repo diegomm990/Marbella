@@ -14,6 +14,7 @@ let ChoosePayment = () => {
     user: finalCart.user,
     address: finalCart.buyerData.address,
     products: finalCart.products,
+    paymentMethod: checked,
   };
   let totalPrice = 0;
   for (let i = 0; i < finalCart.products.length; i++) {

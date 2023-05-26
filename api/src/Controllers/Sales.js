@@ -35,13 +35,14 @@ const getSalesByUser = async (req, res) => {
 const createSale = async (req, res) => {
   let sales = await Sales.find();
   let totalSales = sales.length;
-  let { user, address, products } = req.body;
+  let { user, address, products, paymentMethod } = req.body;
   try {
     const sale = await Sales.create({
       orderNumber: totalSales,
       user,
       address,
       products,
+      paymentMethod,
       approved: false,
       delivered: false,
     });

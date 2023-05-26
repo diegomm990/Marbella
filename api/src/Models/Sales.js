@@ -27,6 +27,9 @@ const SalesSchema = new Schema({
     required: true,
     default: false,
   },
+  paymentMethod: {
+    type: String,
+  },
 });
 
 const Sales = model("Sales", SalesSchema);

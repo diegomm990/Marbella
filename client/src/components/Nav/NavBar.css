@@ -76,6 +76,7 @@
 }
 .NavBar-Bag-Manage {
   position: relative;
+  cursor: pointer;
 }
 .Cart-Quantity {
   position: absolute;
