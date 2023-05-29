@@ -1,0 +1,67 @@
+.Image-Big {
+  z-index: 15;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.Courtain-Image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: grey;
+  opacity: 0.35;
+}
+.Button-Close-Pop-Up {
+  position: absolute;
+  right: 3rem;
+  top: 3rem;
+  border: none;
+  font-size: 2rem;
+  color: black;
+  background: transparent;
+}
+.Button-Close-Pop-Up {
+  position: absolute;
+  right: 3rem;
+  top: 3rem;
+  border: none;
+  font-size: 2rem;
+  color: black;
+  background: transparent;
+}
+.Image-Product-Big {
+  z-index: 16;
+  position: absolute;
+  height: 80%;
+}
+.Button-Change-Image {
+  border: none;
+  background-color: transparent;
+  font-size: 2.5rem;
+  color: black;
+  cursor: pointer;
+  z-index: 17;
+}
+@media screen and (max-width: 868px) {
+  .Image-Product-Big {
+    width: 60%;
+    height: auto;
+  }
+  .Button-Close-Pop-Up {
+    right: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .Image-Big {
+    justify-content: space-between;
+  }
+  .Image-Product-Big {
+    width: 100%;
+    height: auto;
+  }
+}

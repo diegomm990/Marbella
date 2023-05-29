@@ -31,7 +31,7 @@ const MiniProduct = (product) => {
     setDiscount(true);
     setOff(true);
     setPercentege(
-      Math.round(100 - (product.product.discount * 100) / product.product.price)
+      Math.round((product.product.discount * 100) / product.product.price)
     );
   }
   let user = useSelector((state) => state.user);
@@ -41,7 +41,7 @@ const MiniProduct = (product) => {
     let productForm = {
       _id: product.product._id,
       name: product.product.name,
-      price: product.product.price,
+      price: product.product.price - product.product.discount,
       sizes: size,
       quantity: 1,
       image: product.product.images[0],
@@ -99,7 +99,9 @@ const MiniProduct = (product) => {
         />
         <div
           className={
-            off ? "Products-Product-Image-Cont-Discount" : "Display-None"
+            product.product.discount !== 0
+              ? "Products-Product-Image-Cont-Discount"
+              : "Display-None"
           }
         >
           <TbIcons.TbDiscount className="Discount-Icon" /> {percentege}% OFF
@@ -168,15 +170,21 @@ const MiniProduct = (product) => {
         <div className="Products-Product-Prices">
           <h4
             className={
-              discount ? "Products-Product-Price" : "Products-Product-Discount"
+              product.product.discount !== 0
+                ? "Products-Product-Price"
+                : "Products-Product-Discount"
             }
           >
             $ {product.product.price},00
           </h4>
           <h4
-            className={discount ? "Products-Product-Discount" : "No-Discount"}
+            className={
+              product.product.discount !== 0
+                ? "Products-Product-Discount"
+                : "Display-None"
+            }
           >
-            $ {product.product.discount},00
+            $ {product.product.price - product.product.discount},00
           </h4>
         </div>
       </a>

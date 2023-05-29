@@ -91,7 +91,7 @@ const Product = () => {
       let productForm = {
         _id: product._id,
         name: product.name,
-        price: product.price,
+        price: product.price - product.discount,
         sizes: productData.sizes,
         quantity: productData.quantity,
         image: product.images[0],
@@ -126,42 +126,56 @@ const Product = () => {
       }
     }
   };
-  let changeImage1 = () => {
-    setImagen(product.images[0]);
+  let changeImage = (i) => {
+    setImagen(i);
   };
-  let changeImage2 = () => {
-    setImagen(product.images[1]);
-  };
-
   let otherProd = products.filter((p) => p.name !== product.name);
   return (
     <div className="Product">
       <div className="Product-Product">
         <div className="Product-Image-Box">
           <div className="Product-Images-Mini">
-            <img
-              src={product.images ? product.images[0] : "hola.jpg"}
-              alt={product.name}
-              className="Product-Image-Mini"
-              onMouseOver={changeImage1}
-              onClick={() => changeImage1()}
-            />
-            <img
-              src={product.images ? product.images[1] : "hola.jpg"}
-              alt={product.name}
-              className="Product-Image-Mini"
-              onMouseOver={changeImage2}
-              onClick={() => changeImage2()}
-            />
+            {product.images?.map((i) => {
+              return (
+                <img
+                  src={i}
+                  alt=""
+                  className="Product-Image-Mini"
+                  onMouseOver={() => changeImage(i)}
+                  onClick={() => changeImage(i)}
+                />
+              );
+            })}
           </div>
-          <img src={imagen} alt={product.name} className="Product-Image" />
+          <img
+            src={imagen}
+            alt={product.name}
+            className="Product-Image"
+            onClick={() => popUpSet("Image", true)}
+          />
         </div>
         <div className="Product-Description-Box">
           <h2 className="Product-Name">{product.name}</h2>
           <p className="Product-Category">{product.category}</p>
           <div className="Product-Prices">
-            <h4 className="Product-Price">${product.price},00 </h4>
-            <h4 className="Product-Price-Discount">${product.discount},00</h4>
+            <h4
+              className={
+                product.discount === 0
+                  ? "Product-Price-No-Discount"
+                  : "Product-Price"
+              }
+            >
+              ${product.price},00{" "}
+            </h4>
+            <h4
+              className={
+                product.discount === 0
+                  ? "Display-None"
+                  : "Product-Price-Discount"
+              }
+            >
+              ${product.price - product.discount},00
+            </h4>
           </div>
           <p>Talle:</p>
           <select
@@ -175,6 +189,12 @@ const Product = () => {
             <option value="L">L</option>
             <option value="XL">XL</option>
           </select>
+          <button
+            className="Size-Guide"
+            onClick={() => popUpSet("SizeGuide", true)}
+          >
+            Guia de talles
+          </button>
           <p>Cantidad:</p>
           <div className="Product-Quantity">
             <div className="Product-Quantity-Block-1">

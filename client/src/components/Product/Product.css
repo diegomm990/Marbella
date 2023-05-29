@@ -58,6 +58,12 @@
   margin-top: 0;
   padding-left: 1rem;
 }
+.Product-Price-No-Discount {
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  margin-top: 0;
+}
 p {
   margin-bottom: 1vh;
 }
@@ -154,7 +160,13 @@ p {
   justify-content: center;
   align-items: center;
 }
-
+.Size-Guide {
+  width: fit-content;
+  border: none;
+  margin-top: 0.5rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
 @media screen and (max-width: 1268px) {
   .Product-Image-Box {
     width: 30rem;

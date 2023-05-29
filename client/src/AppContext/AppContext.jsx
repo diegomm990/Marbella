@@ -12,6 +12,8 @@ const AppContextComponent = ({ children }) => {
   const [popUpSize, setPopUpSize] = useState(false);
   const [popUpForm, setPopUpForm] = useState(false);
   const [popUpComment, setPopUpComment] = useState(false);
+  const [popUpImage, setPopUpImage] = useState(false);
+  const [popUpSizeGuide, setPopUpSizeGuide] = useState(false);
   const popUpSet = (popUp, state) => {
     eval(`setPopUp${popUp}(${state})`);
   };
@@ -64,6 +66,8 @@ const AppContextComponent = ({ children }) => {
         popUpSize,
         popUpForm,
         popUpComment,
+        popUpImage,
+        popUpSizeGuide,
         closePopUp,
         closePopUpCourtain,
       }}

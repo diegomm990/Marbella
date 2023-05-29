@@ -50,21 +50,29 @@ let addInfoToCart = async (req, res) => {
   let cart;
   if (user) {
     if (buyerData.address.province === "Capital Federal") {
+      let ship = 1500;
+      if (total > 20000) {
+        ship = 0;
+      }
       await Carts.findOneAndUpdate(
         { user, saleFinished: false },
         {
           buyerData: buyerData,
-          shippingPrice: 1500,
+          shippingPrice: ship,
           total,
           discount,
         }
       );
     } else {
+      let ship = 2500;
+      if (total > 20000) {
+        ship = 0;
+      }
       await Carts.findOneAndUpdate(
         { user, saleFinished: false },
         {
           buyerData: buyerData,
-          shippingPrice: 2500,
+          shippingPrice: ship,
           total,
           discount,
         }

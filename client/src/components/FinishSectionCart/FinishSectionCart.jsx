@@ -42,11 +42,15 @@ let FinishSectionCart = ({ number }) => {
         </div>
         <div className="Subtotal-Cont">
           <div>Envio</div>
-          <div className="Subtotal-Price">
-            {shippingPrice !== 0
-              ? `ARS $${shippingPrice},00`
-              : "Calculado en proximo paso"}
-          </div>
+          {number >= 2 ? (
+            <div className="Subtotal-Price">ARS ${shippingPrice},00</div>
+          ) : (
+            <div className="Subtotal-Price">
+              {shippingPrice
+                ? `ARS $${shippingPrice},00`
+                : "Calculado en proximo paso"}
+            </div>
+          )}
         </div>
       </div>
       <div className="Section-Subtotal">
