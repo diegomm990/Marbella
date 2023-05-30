@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./AddressForm.css";
 import axios from "axios";
+let { URL } = process.env;
 
 let AddressForm = () => {
   let user = JSON.parse(localStorage.getItem("user"));
@@ -65,7 +66,7 @@ let AddressForm = () => {
       setZipCodeError(false);
       try {
         const { data } = await axios.post(
-          "http://localhost:3001/users/updateUser",
+          `${URL}users/updateUser`,
           userAddress
         );
         console.log(data);

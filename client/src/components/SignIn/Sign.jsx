@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { logIn, logInUpdateCart, logedUser } from "../../redux/actions/actions";
 import { AppContext } from "../../AppContext/AppContext";
+// require("dotenv").config();
 
 let Sign = () => {
+  console.log(process.env.REACT_APP_URL);
   let { popUpSet } = useContext(AppContext);
   let dispatch = useDispatch();
   let user = useSelector((state) => state.user);
@@ -58,7 +60,7 @@ let Sign = () => {
       try {
         setError(false);
         const { data } = await axios.post(
-          "http://localhost:3001/users/loginUser",
+          `${process.env.REACT_APP_URL}users/loginUser`,
           logInData,
           {
             headers: {
@@ -99,7 +101,7 @@ let Sign = () => {
     if (form) {
       try {
         const { data } = await axios.post(
-          "http://localhost:3001/users",
+          `${process.env.REACT_APP_URL}users`,
           signUpData,
           {
             headers: {

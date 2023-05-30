@@ -30,7 +30,7 @@ let SignIn = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:3001/users/loginUser",
+        `${process.env.REACT_APP_URL}users/loginUser`,
         userData,
         {
           headers: {
