@@ -39,7 +39,7 @@ let SignIn = () => {
         }
       );
       dispatch(logedUser(data));
-      localStorage.setItem("user", JSON.stringify(data));
+      localStorage.setItem("user", data._id);
       dispatch(logIn());
       dispatch(logInUpdateCart({ user: data._id, products: newCart }));
       localStorage.setItem("userLoged", true);

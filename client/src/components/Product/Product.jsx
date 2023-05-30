@@ -221,7 +221,11 @@ const Product = () => {
             type="submit"
             value={size ? "Agregar al carrito" : "No hay stock"}
             className={size ? "Product-Cart-Button" : "Product-Cart-Button-No"}
-            onClick={() => submitForm()}
+            onClick={() => {
+              submitForm();
+              popUpSet("Added", true);
+              popUpSet("Notification", true);
+            }}
           />
           <p className="Product-Discount">
             10% de descuento pagando con Transferencia Bancaria

@@ -93,6 +93,19 @@ export const createUser = (paylaod) => {
   };
 };
 
+export const getUserById = (payload) => {
+  return async (dispatch) => {
+    const user = await axios.get(
+      `${process.env.REACT_APP_URL}users/getUser`,
+      payload
+    );
+    dispatch({
+      type: GET_USER,
+      payload: user.data,
+    });
+  };
+};
+
 export const logedUser = (payload) => {
   return {
     type: GET_USER,

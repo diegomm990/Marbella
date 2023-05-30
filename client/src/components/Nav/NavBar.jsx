@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getCartById,
   getCartByUser,
+  getUserById,
   logIn,
   logedUser,
 } from "../../redux/actions/actions";
@@ -15,6 +16,16 @@ import { AppContext } from "../../AppContext/AppContext";
 
 let NavBar = () => {
   let dispatch = useDispatch();
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      let userInStorage = localStorage.getItem("user");
+      if (userInStorage) {
+        dispatch(getUserById(userInStorage));
+        dispatch(getCartByUser(userInStorage));
+        dispatch(logIn());
+      }
+    }
+  }, []);
   const { popUpSet, popUpCourtain, closePopUpCourtain } =
     useContext(AppContext);
   let [nav, setNav] = useState(true);
@@ -23,13 +34,6 @@ let NavBar = () => {
   let user = useSelector((state) => state.user);
   let loged = useSelector((state) => state.logIn);
   let [cartUser, setCartUser] = useState(false);
-  if (!user.name) {
-    let userInStorage = localStorage.getItem("user");
-    if (userInStorage) {
-      dispatch(logedUser(JSON.parse(userInStorage)));
-      dispatch(logIn());
-    }
-  }
   let cart = useSelector((state) => state.cart);
   let [cartProducts, setCartProducts] = useState(0);
   useEffect(() => {
@@ -43,22 +47,22 @@ let NavBar = () => {
     ) {
       setNav(false);
     }
-    if (cart.length) {
+    if (cart?.length) {
       let productsInCart = 0;
       for (let i = 0; i < cart.length; i++) {
         productsInCart = productsInCart + cart[i].quantity;
       }
       setCartProducts(productsInCart);
     }
-    if (!cart.length) {
+    if (!cart?.length) {
       setCartProducts(0);
     }
-    if (loged && user && cart.length === 0 && !cartUser) {
+    if (loged && user && cart?.length === 0 && !cartUser) {
       let userId = user._id;
       dispatch(getCartByUser(userId));
       setCartUser(true);
     }
-    if (!loged && idInStorage && cart.length === 0 && !cartUser) {
+    if (!loged && idInStorage && cart?.length === 0 && !cartUser) {
       dispatch(getCartById(idInStorage));
       setCartUser(true);
     }

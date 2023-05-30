@@ -3,6 +3,7 @@ import "./Account.css";
 import axios from "axios";
 import {
   createCart,
+  getUserById,
   logIn,
   logOut,
   logedUser,
@@ -12,8 +13,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 let Account = () => {
   let dispatch = useDispatch();
-  let user = JSON.parse(localStorage.getItem("user"));
   let cart = useSelector((state) => state.cart);
+  let user = useSelector((state) => state.user);
   let sales = [];
   let [address, setAddress] = useState(false);
   let logUserOut = () => {
@@ -39,12 +40,12 @@ let Account = () => {
         <div className="Account-Info">
           <div className="Account-Name">
             <div className="Account-Name-Logo">
-              {user.name.charAt(0)}
-              {user.lastname.charAt(0)}
+              {user.name?.charAt(0)}
+              {user.lastname?.charAt(0)}
             </div>
             <div className="Account-Name-Info">
               <div className="Account-Name-Complete">
-                {user.name.toUpperCase()} {user.lastname.toUpperCase()}
+                {user.name?.toUpperCase()} {user.lastname?.toUpperCase()}
               </div>
               <div className="Account-Name-Email">{user.email}</div>
               <button className="Account-Log-Out" onClick={() => logUserOut()}>
@@ -58,10 +59,10 @@ let Account = () => {
               className="Account-Addresses-Button"
               onClick={() => setAddress(!address)}
             >
-              Ver tus direcciones ({user.address.length})
+              Ver tus direcciones ({user.address?.length})
             </button>
             {address ? (
-              user.address.length ? (
+              user.address?.length ? (
                 user.address.map((a) => {
                   return (
                     <div className="Account-Address">
@@ -93,7 +94,7 @@ let Account = () => {
             ) : (
               <div className="Account-Orders-Empty">
                 <img
-                  src="https://row.shop.gymshark.com/no-orders-graphic.svg"
+                  src="https://row.gymshark.com/no-orders-graphic.svg"
                   alt=""
                 />
                 <div className="Account-Orders-Empty-Title">NO HAY PEDIDOS</div>

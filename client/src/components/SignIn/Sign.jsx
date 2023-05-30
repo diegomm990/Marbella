@@ -8,7 +8,6 @@ import { AppContext } from "../../AppContext/AppContext";
 // require("dotenv").config();
 
 let Sign = () => {
-  console.log(process.env.REACT_APP_URL);
   let { popUpSet } = useContext(AppContext);
   let dispatch = useDispatch();
   let user = useSelector((state) => state.user);
@@ -69,7 +68,7 @@ let Sign = () => {
           }
         );
         dispatch(logedUser(data));
-        localStorage.setItem("user", JSON.stringify(data));
+        localStorage.setItem("user", data._id);
         dispatch(logIn());
         dispatch(logInUpdateCart({ user: data._id, products: newCart }));
         localStorage.setItem("userLoged", true);

@@ -10,6 +10,15 @@ const getUsers = async (req, res) => {
     console.log(error);
   }
 };
+const getUserById = async (req, res) => {
+  const { id } = req.body;
+  try {
+    const user = await Users.findOne({ id });
+    res.status(201).send(user);
+  } catch (error) {
+    console.log(error);
+  }
+};
 const registerUser = asyncHandler(async (req, res) => {
   const { name, lastname, email, password, admin, address, phone } = req.body;
 
@@ -98,4 +107,4 @@ const updateUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, authUser, updateUser, getUsers };
+module.exports = { registerUser, authUser, updateUser, getUsers, getUserById };

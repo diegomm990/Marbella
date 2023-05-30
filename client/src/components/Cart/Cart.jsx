@@ -77,7 +77,7 @@ const Cart = () => {
         ) : (
           <div className="Cart-Body-Empty">
             <img
-              src="https://row.shop.gymshark.com/empty-bag.svg"
+              src="https://row.gymshark.com/empty-bag.svg"
               alt="cart"
               className="Cart-Bag"
             />
