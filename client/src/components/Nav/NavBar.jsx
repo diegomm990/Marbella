@@ -10,7 +10,6 @@ import {
   getCartByUser,
   getUserById,
   logIn,
-  logedUser,
 } from "../../redux/actions/actions";
 import { AppContext } from "../../AppContext/AppContext";
 

@@ -12,6 +12,9 @@
   width: calc(55% - 2rem);
 }
 @media screen and (max-width: 868px) {
+  .Purchase-Finished {
+    margin-bottom: 3rem;
+  }
   .Purchase-Info-Section {
     width: calc(100% - 2rem);
     padding: 2rem 0 0 1rem;

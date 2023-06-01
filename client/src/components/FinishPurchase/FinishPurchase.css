@@ -112,6 +112,7 @@
   border-radius: 4px;
   font-size: 0.8rem;
   padding-left: 1rem;
+  border: 0.8px solid grey;
 }
 .Form-Name-Select-Wrong {
   width: calc(90% + 1rem + 1.6px);
@@ -133,13 +134,14 @@
     display: flex;
     flex-direction: column;
     padding: 3rem 0 0 2rem;
-    width: calc(100% - 3rem);
+    width: calc(100% - 4rem);
+    border-right: none;
   }
   .Finish-Account-Info {
     width: 100%;
   }
   .Finish-Account-Name {
-    width: 80%;
+    width: 90%;
   }
   .Button-Finish-Container {
     justify-content: flex-start;
@@ -147,7 +149,8 @@
   .Finish-No-User {
     display: flex;
     flex-direction: column;
-    border-right: 1px solid rgb(236, 229, 229);
+    /* border-right: 1px solid rgb(236, 229, 229); */
+    border-right: none;
     min-height: 100%;
     padding: 3rem 0 0 2rem;
     width: calc(100% - 4rem);

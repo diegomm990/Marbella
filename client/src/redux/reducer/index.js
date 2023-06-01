@@ -16,6 +16,7 @@ import {
   CART_USER,
   EMPTY_CART,
   FINAL_NO_USER,
+  SET_SALE,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -29,6 +30,7 @@ const initialState = {
   sales: [],
   salesById: [],
   finalNoUser: [],
+  sale: {},
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -131,6 +133,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         finalNoUser: action.payload,
+      };
+    case SET_SALE:
+      return {
+        ...state,
+        sale: action.payload,
       };
     default:
       return state;

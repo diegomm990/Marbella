@@ -47,10 +47,16 @@
     flex-direction: column;
     justify-content: center;
     padding: 3rem 0 0 1rem;
-    width: calc(100% - 1rem);
+    width: calc(100% - 2rem);
     border-right: none;
   }
   .Button-Shipping-Container {
+    display: flex;
     justify-content: center;
+    width: 100%;
+  }
+  .Finish-Shipping-Continue {
+    width: 100%;
+    margin-left: 2rem;
   }
 }

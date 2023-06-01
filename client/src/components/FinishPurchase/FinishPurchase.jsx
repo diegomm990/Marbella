@@ -6,6 +6,7 @@ import {
   addInfoSale,
   getCartById,
   getCartIdByUser,
+  getUserById,
 } from "../../redux/actions/actions";
 import FinishSectionCart from "../FinishSectionCart/FinishSectionCart";
 import OrderSummary from "../OrderSummary/OrderSummary";
@@ -15,13 +16,15 @@ let FinishPurchase = () => {
   let { popUpSet } = useContext(AppContext);
   let dispatch = useDispatch();
   let [userLoged, setUserLoged] = useState(false);
-  let [user, setUser] = useState({});
   let id = localStorage.getItem("id");
   let [cartAvailable, setCartAvailable] = useState(false);
+  let user = useSelector((state) => state.user);
+  console.log(user);
   // let [orderSummary, setOrderSummary] = useState(false);
   useEffect(() => {
     if (localStorage.getItem("user") && !userLoged) {
-      setUser(JSON.parse(localStorage.getItem("user")));
+      // setUser(JSON.parse(localStorage.getItem("user")));
+      dispatch(getUserById(localStorage.getItem("user")));
       setUserLoged(true);
     }
     if (cart.length === 0) {
@@ -176,15 +179,15 @@ let FinishPurchase = () => {
           <div className="Finish-Account-Info">
             <div className="Finish-Account-Name">
               <div className="Finish-Account-Name-Logo">
-                {user.name.charAt(0)}
-                {user.lastname.charAt(0)}
+                {user?.name?.charAt(0)}
+                {user?.lastname?.charAt(0)}
               </div>
               <div className="Finish-Account-Name-Info">
                 <div className="Finish-Account-Name-Complete">
-                  {user.name.toUpperCase()} {user.lastname.toUpperCase()}
+                  {user?.name?.toUpperCase()} {user.lastname?.toUpperCase()}
                 </div>
                 <div className="AccoFinish-Accountunt-Name-Email">
-                  {user.email}
+                  {user?.email}
                 </div>
               </div>
             </div>
@@ -192,7 +195,7 @@ let FinishPurchase = () => {
               <h4 className="Finish-Account-Addresses-Title">
                 TUS DIRECCIONES
               </h4>
-              {user.address.length ? (
+              {user?.address?.length ? (
                 user.address.map((a) => {
                   return (
                     <div className="Finish-Account-Address">

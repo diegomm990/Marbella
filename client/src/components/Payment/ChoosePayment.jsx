@@ -34,7 +34,7 @@ let ChoosePayment = () => {
       }
       setTimeout(() => {
         dispatch(createSale(saleObj)).then((e) =>
-          localStorage.setItem("saleObj", JSON.stringify(e))
+          localStorage.setItem("saleObj", JSON.stringify(e._id))
         );
         dispatch(
           payment({
@@ -47,7 +47,7 @@ let ChoosePayment = () => {
       }, 300);
     } else if (checked === "TB") {
       dispatch(createSale(saleObj)).then((e) =>
-        localStorage.setItem("saleObj", JSON.stringify(e))
+        localStorage.setItem("saleObj", JSON.stringify(e._id))
       );
       let order = JSON.parse(localStorage.getItem("saleObj")).orderNumber;
       dispatch(

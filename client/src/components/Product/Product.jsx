@@ -67,6 +67,7 @@ const Product = () => {
     }
     if (e.target.value !== "-") {
       setQuant(true);
+      setCounter(1);
       if (product[`stock${e.target.value}`].quantity > 0) {
         setSize(true);
       } else {
@@ -107,6 +108,9 @@ const Product = () => {
             dispatch(getCartByUser(user._id));
           }, 200)
         );
+        popUpSet("Size", false);
+        popUpSet("Added", true);
+        popUpSet("Notification", true);
       } else {
         if (!localStorage.getItem("id")) {
           dispatch(createCart({ products: [productForm] })).then((e) => {
@@ -115,6 +119,9 @@ const Product = () => {
               dispatch(getCartById(e._id));
             }, 200);
           });
+          popUpSet("Size", false);
+          popUpSet("Added", true);
+          popUpSet("Notification", true);
         } else {
           let id = localStorage.getItem("id");
           dispatch(createCart({ id: id, products: [productForm] })).then(
@@ -122,6 +129,9 @@ const Product = () => {
               dispatch(getCartById(id));
             }
           );
+          popUpSet("Size", false);
+          popUpSet("Added", true);
+          popUpSet("Notification", true);
         }
       }
     }
@@ -223,8 +233,6 @@ const Product = () => {
             className={size ? "Product-Cart-Button" : "Product-Cart-Button-No"}
             onClick={() => {
               submitForm();
-              popUpSet("Added", true);
-              popUpSet("Notification", true);
             }}
           />
           <p className="Product-Discount">

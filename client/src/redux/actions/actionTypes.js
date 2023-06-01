@@ -15,3 +15,4 @@ export const CART_USER = "CART_USER";
 export const CART_ID = "CART_ID";
 export const EMPTY_CART = "EMPTY_CART";
 export const FINAL_NO_USER = "FINAL_NO_USER";
+export const SET_SALE = "SET_SALE";

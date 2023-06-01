@@ -1,7 +1,5 @@
 import React from "react";
 import "./Shipping.css";
-import ShippingUser from "./ShippingUser";
-import ShippingNoUser from "./ShippingNoUser";
 import FinishProgress from "../FinishProgress/FinishProgress";
 import OrderSummary from "../OrderSummary/OrderSummary";
 import FinishSectionCart from "../FinishSectionCart/FinishSectionCart";
@@ -9,7 +7,6 @@ import ShippingContactInfo from "./ShippingContactInfo";
 import ShippingMethod from "./ShippingMethod";
 
 let Shipping = () => {
-  let finalCart = JSON.parse(localStorage.getItem("finalCart"));
   let submitHandler = () => {
     window.location.assign("/payment");
   };

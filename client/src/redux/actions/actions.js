@@ -16,6 +16,7 @@ import {
   CART_USER,
   EMPTY_CART,
   FINAL_NO_USER,
+  SET_SALE,
 } from "./actionTypes";
 
 export const getAllProducts = () => {
@@ -163,6 +164,13 @@ export const getSaleById = (payload) => {
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+export const setSaleInReducer = (payload) => {
+  return {
+    type: SET_SALE,
+    payload,
   };
 };
 
@@ -384,7 +392,6 @@ export const addInfoSale = (payload) => {
         `${process.env.REACT_APP_URL}cart/addInfoToCart`,
         payload
       );
-      localStorage.setItem("finalCart", JSON.stringify(info.data));
       dispatch({
         type: FINAL_NO_USER,
         payload: info.data,
@@ -431,5 +438,33 @@ export const saleCompleted = (payload) => {
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+export const getFinalCartUser = (payload) => {
+  return async function (dispatch) {
+    try {
+      let cart = await axios.get(
+        `${process.env.REACT_APP_URL}cart/getCartByUser/${payload}`
+      );
+      dispatch({
+        type: FINAL_NO_USER,
+        payload: cart.data,
+      });
+    } catch (error) {}
+  };
+};
+
+export const getFinalCartNoUser = (payload) => {
+  return async function (dispatch) {
+    try {
+      let cart = await axios.get(
+        `${process.env.REACT_APP_URL}cart/getCartById/${payload}`
+      );
+      dispatch({
+        type: FINAL_NO_USER,
+        payload: cart.data,
+      });
+    } catch (error) {}
   };
 };
