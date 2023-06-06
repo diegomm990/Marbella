@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./PurchaseCart.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getSaleById, setSaleInReducer } from "../../redux/actions/actions";
 
 let PurchaseCart = () => {
-  let saleObj = JSON.parse(localStorage.getItem("saleObj"));
+  let dispatch = useDispatch();
+  let saleObj = useSelector((state) => state.sale);
+  useEffect(() => {
+    dispatch(getSaleById(localStorage.getItem("saleObj"))).then((e) => {
+      dispatch(setSaleInReducer(e));
+    });
+  }, []);
   return (
     <div className="Purchase-Cart">
       <h4 className="Purchase-Cart-Title">TU COMPRA</h4>
       <div className="Purchase-Cart-Products">
-        {saleObj.products.map((p) => {
+        {saleObj?.products?.map((p) => {
           return (
             <div className="Purchase-Cart-Product">
               <div className="Purchase-Cart-Product-Image-Container">

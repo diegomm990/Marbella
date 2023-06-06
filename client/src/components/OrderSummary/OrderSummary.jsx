@@ -4,37 +4,37 @@ import * as BsIcons from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import MiniProductFinish from "../FinishPurchase/MiniProductFinish";
 import "./OrderSummary.css";
-import { getSaleById } from "../../redux/actions/actions";
+import {
+  getFinalCartNoUser,
+  getFinalCartUser,
+  getSaleById,
+  setSaleInReducer,
+} from "../../redux/actions/actions";
 
 let OrderSummary = ({ number }) => {
+  let dispatch = useDispatch();
   let [orderSummary, setOrderSummary] = useState(false);
   let cart = useSelector((state) => state.cart);
-  let totalPrice = 0;
-  let [finalCart, setFinalCart] = useState({});
-  let totalPriceFinish = 0;
-  for (let i = 0; i < cart.length; i++) {
-    totalPrice += cart[i].price * cart[i].quantity;
-  }
-  if (finalCart !== {}) {
-    for (let i = 0; i < finalCart?.products?.length; i++) {
-      totalPriceFinish +=
-        finalCart.products[i].price * finalCart.products[i].quantity;
-    }
-  }
+  let finalCart = useSelector((state) => state.finalNoUser);
+  let [discount, setDiscount] = useState(0);
+  let totalPrice = finalCart.total;
+  let totalPriceFinish = finalCart.total + finalCart.shippingPrice - discount;
   let [shippingPrice, setShippingPrice] = useState(0);
   let [saleObj, setSaleObj] = useState({});
-  let [discount, setDiscount] = useState(0);
+  let sale = useSelector((state) => state.sale);
   useEffect(() => {
     if (number >= 2) {
-      let finalCartStore = JSON.parse(localStorage.getItem("finalCart"));
-      setFinalCart(finalCartStore);
-      setShippingPrice(finalCartStore.shippingPrice);
+      if (localStorage.getItem("userLoged")) {
+        dispatch(getFinalCartUser(localStorage.getItem("user")));
+      } else {
+        dispatch(getFinalCartNoUser(localStorage.getItem("id")));
+      }
+      setShippingPrice(finalCart.shippingPrice);
     }
     if (number === 4) {
-      let newObj = JSON.parse(localStorage.getItem("saleObj"));
-      setSaleObj(newObj);
-      if (newObj.paymentMethod === "TB") {
-        setDiscount(totalPrice * 0.1);
+      dispatch(getSaleById(localStorage.getItem("saleObj")));
+      if (sale.paymentMethod === "TB") {
+        setDiscount(finalCart.discount);
       }
     }
   }, []);
@@ -50,9 +50,12 @@ let OrderSummary = ({ number }) => {
           <IoIcons.IoIosArrowDown />
         </div>
         {number === 4 ? (
-          <h4>ARS ${totalPriceFinish + shippingPrice - discount},00</h4>
+          <h4>ARS ${totalPriceFinish},00</h4>
         ) : (
-          <h4>ARS ${totalPrice + shippingPrice},00</h4>
+          <h4>
+            ARS ${totalPriceFinish}
+            ,00
+          </h4>
         )}
       </div>
       {number === 4 ? (
@@ -64,7 +67,7 @@ let OrderSummary = ({ number }) => {
           })}
           <div
             className={
-              saleObj.paymentMethod === "TB" ? "Order-Discount" : "Display-None"
+              sale.paymentMethod === "TB" ? "Order-Discount" : "Display-None"
             }
           >
             <h3 className="Order-Discount-Text">Descuento:</h3>

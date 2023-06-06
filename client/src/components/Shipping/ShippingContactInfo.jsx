@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import "./ShippingContactInfo.css";
 import { BsDisplay } from "react-icons/bs";
-import { useDispatch } from "react-redux";
-import { getSaleById } from "../../redux/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getFinalCartNoUser,
+  getFinalCartUser,
+  getSaleById,
+} from "../../redux/actions/actions";
 
 let ShippingContactInfo = ({ number }) => {
   let dispatch = useDispatch();
-  let finalCart = JSON.parse(localStorage.getItem("finalCart"));
-  let [sale, setSale] = useState({});
+  let finalCart = useSelector((state) => state.finalNoUser);
+  let sale = useSelector((state) => state.sale);
   useEffect(() => {
-    if (number === 4) {
-      let saleObj = JSON.parse(localStorage.getItem("saleObj"));
-      dispatch(getSaleById(saleObj._id)).then((e) => {
-        setSale(e);
-      });
+    if (localStorage.getItem("userLoged")) {
+      dispatch(getFinalCartUser(localStorage.getItem("user")));
+    } else {
+      dispatch(getFinalCartNoUser(localStorage.getItem("id")));
     }
   }, []);
   return (
@@ -22,7 +25,7 @@ let ShippingContactInfo = ({ number }) => {
         <div className="Shipping-Contact-Mail">
           <h4 className="Shipping-Contact-Title">Contacto</h4>
           <h4 className="Shipping-Contact-Info-Block">
-            {finalCart.buyerData.email}
+            {finalCart?.buyerData?.email}
           </h4>
         </div>
         <a
@@ -40,9 +43,9 @@ let ShippingContactInfo = ({ number }) => {
         <div className="Shipping-Contact-Mail">
           <h4 className="Shipping-Contact-Title">Enviar a</h4>
           <h4 className="Shipping-Contact-Info-Block">
-            {finalCart.buyerData.address.street}{" "}
-            {finalCart.buyerData.address.number}{" "}
-            {finalCart.buyerData.address.department}
+            {finalCart?.buyerData?.address.street}{" "}
+            {finalCart?.buyerData?.address.number}{" "}
+            {finalCart?.buyerData?.address.department}
           </h4>
         </div>
         <a
@@ -66,7 +69,7 @@ let ShippingContactInfo = ({ number }) => {
           <h4 className="Shipping-Contact-Info-Block-1">
             Correo Argentino{"(5-8 dias habiles}"}
             {number !== 4 ? (
-              ` - ${finalCart.shippingPrice}
+              ` - ${finalCart?.shippingPrice}
             ,00`
             ) : (
               <></>

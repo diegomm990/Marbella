@@ -1,8 +1,9 @@
 import React from "react";
 import "./ShippingMethod.css";
+import { useSelector } from "react-redux";
 
 let ShippingMethod = () => {
-  let finalCart = JSON.parse(localStorage.getItem("finalCart"));
+  let finalCart = useSelector((state) => state.finalNoUser);
   return (
     <div className="ShippingMethod">
       <h3>Envío</h3>

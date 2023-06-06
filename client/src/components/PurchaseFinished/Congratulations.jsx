@@ -5,8 +5,7 @@ import ShippingContactInfo from "../Shipping/ShippingContactInfo";
 import { useSelector } from "react-redux";
 
 let Congratulations = () => {
-  let finalCart = useSelector((state) => state.finalNoUser[0]);
-  console.log(finalCart);
+  let finalCart = useSelector((state) => state.finalNoUser);
   return (
     <div className="Congratulations">
       <div className="Congratulations-Header">

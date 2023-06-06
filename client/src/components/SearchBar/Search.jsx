@@ -1,15 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Search.css";
 import { AppContext } from "../../AppContext/AppContext";
 import * as SlIcons from "react-icons/sl";
 import * as AiIcons from "react-icons/ai";
 import * as GrIcons from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
-import { searchProducts } from "../../redux/actions/actions";
+import { getAllProducts, searchProducts } from "../../redux/actions/actions";
 import MiniProduct from "./MiniProdSearch";
 let Search = () => {
   let dispatch = useDispatch();
   let { popUpSearch, popUpSet, closePopUp } = useContext(AppContext);
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, []);
   let [recentlyViwed, setRecentlyViwed] = useState(true);
   let [search, setSearch] = useState(false);
   const inputHandler = (e) => {
@@ -82,13 +85,17 @@ let Search = () => {
         </div>
       ) : (
         <div className="Search-Body">
-          <div className="Search-Trending-Body">
+          {/* <div className="Search-Trending-Body">
             <div className="Search-Trending-Title">BUSQUEDAS FRECUENTES</div>
             <div className="Search-Trends">
-              <a className="Search-Trend">BASIC NEGRA</a>
-              <a className="Search-Trend">BASIC BLANCA</a>
+              <a className="Search-Trend" href={`/products/${products[0]._id}`}>
+                BASIC NEGRA
+              </a>
+              <a className="Search-Trend" href={`/products/${products[1]._id}`}>
+                BASIC BLANCA
+              </a>
             </div>
-          </div>
+          </div> */}
           <div className="Search-Recently-Viwed">
             <div
               className={

@@ -5,18 +5,9 @@ import "./FinishSectionCart.css";
 
 let FinishSectionCart = ({ number }) => {
   let cart = useSelector((state) => state.cart);
-  let totalPrice = 0;
-  for (let i = 0; i < cart.length; i++) {
-    totalPrice += cart[i].price * cart[i].quantity;
-  }
-  let [shippingPrice, setShippingPrice] = useState(0);
-  useEffect(() => {
-    if (number >= 2) {
-      let finalCart = JSON.parse(localStorage.getItem("finalCart"));
-      setShippingPrice(finalCart.shippingPrice);
-    }
-  }, []);
-
+  let finalCart = useSelector((state) => state.finalNoUser);
+  let totalPrice = finalCart.total;
+  let shippingPrice = finalCart.shippingPrice;
   return (
     <div className="Section-Purchase-Information">
       <div className="Section-Purchase-Cart">

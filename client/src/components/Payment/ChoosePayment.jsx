@@ -1,25 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ChoosePayment.css";
-import { useDispatch } from "react-redux";
-import { createSale, payment, saleTransfer } from "../../redux/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  createSale,
+  getFinalCartNoUser,
+  getFinalCartUser,
+  getSaleById,
+  payment,
+  saleTransfer,
+  setSaleInReducer,
+} from "../../redux/actions/actions";
 import Spinner from "./Spinner";
 
 let ChoosePayment = () => {
   let dispatch = useDispatch();
   let [checked, setChecked] = useState("TB");
   let [loader, setLoader] = useState(false);
-  let finalCart = JSON.parse(localStorage.getItem("finalCart"));
+  let finalCart = useSelector((state) => state.finalNoUser);
+  let sale = useSelector((state) => state.sale);
+  useEffect(() => {
+    if (localStorage.getItem("userLoged")) {
+      dispatch(getFinalCartUser(localStorage.getItem("user")));
+    } else {
+      dispatch(getFinalCartNoUser(localStorage.getItem("id")));
+    }
+  }, []);
+
   let cartMercadoPago = [];
   let saleObj = {
     user: finalCart.user,
-    address: finalCart.buyerData.address,
+    address: finalCart.buyerData?.address,
     products: finalCart.products,
     paymentMethod: checked,
   };
-  let totalPrice = 0;
-  for (let i = 0; i < finalCart.products.length; i++) {
-    totalPrice += finalCart.products[i].price;
-  }
+  let totalPrice = finalCart.total;
   let finishPurchase = () => {
     setLoader(true);
     if (checked === "MP") {
@@ -47,9 +61,12 @@ let ChoosePayment = () => {
       }, 300);
     } else if (checked === "TB") {
       dispatch(createSale(saleObj)).then((e) =>
-        localStorage.setItem("saleObj", JSON.stringify(e._id))
+        localStorage.setItem("saleObj", e._id)
       );
-      let order = JSON.parse(localStorage.getItem("saleObj")).orderNumber;
+      dispatch(getSaleById(localStorage.getItem("saleObj"))).then((e) =>
+        dispatch(setSaleInReducer(e))
+      );
+      let order = sale.orderNumber;
       dispatch(
         saleTransfer({
           user: finalCart.buyerData,
